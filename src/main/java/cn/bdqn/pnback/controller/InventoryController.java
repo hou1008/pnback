@@ -14,11 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class InventoryController {
     @Autowired
     private InventoryService InventoryService;
-    @RequestMapping("charts-5.html")
-    public String aaaa(){
 
-        return "charts-5";
-    }
     @ResponseBody
     @RequestMapping("idcha")
     public String aaa(){
