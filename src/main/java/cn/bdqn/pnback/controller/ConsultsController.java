@@ -7,9 +7,4 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ConsultsController {
 
 
-
-    @RequestMapping("/toindex")
-    public String toindex(){
-        return "index";
-    }
 }

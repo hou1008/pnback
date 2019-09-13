@@ -10,6 +10,9 @@ spring:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
   thymeleaf:
     cache: false
+    encoding: UTF-8
+    suffix: .html
+    mode: LEGACYHTML5
 server:
   port: 8080
 mybatis:
