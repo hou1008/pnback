@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.bdqn.pnback.dao.GoodsDao">
+    <resultMap id="hehe" type="cn.bdqn.pnback.pojo.Goods">
+        <id column="gId" property="gId"/>
+        <result property="gName" column="gName" />
+        <result property="dId" column="dId" />
+        <result property="cId" column="cId" />
+        <result property="rContent" column="rContent" />
+        <result property="pFen" column="pFen" />
+        <result property="kTime" column="kTime" />
+        <result property="jTime" column="jTime" />
+        <result property="address" column="address" />
+        <result property="price" column="price" />
+        <result property="gTime" column="gTime" />
+        <result property="rSeat" column="rSeat" />
+        <result property="gDiscount" column="gDiscount" />
+        <result property="photoId" column="photoId" />
+        <association property="classify" javaType="cn.bdqn.pnback.pojo.Classify">
+            <id column="cId" property="cId"/>
+            <result column="cName" property="cName"/>
+            <result column="zId" property="zId"/>
+        </association>
+    </resultMap>
+    <select id="getGoodsPage" resultMap="hehe">
+        SELECT * FROM classify c,goods g WHERE c.`cId`=g.`cId` limit #{index},#{pageCount}
+    </select>
+    <select id="getCount" resultType="Integer">
+        select count(*) from classify c,goods g WHERE c.`cId`=g.`cId`
+    </select>
+</mapper>

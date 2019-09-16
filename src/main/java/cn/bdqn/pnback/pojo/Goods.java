@@ -18,6 +18,15 @@ public class Goods implements Serializable{
     private Integer rSeat;
     private Double gDiscount;
     private Integer photoId;
+    private Classify classify;
+
+    public Classify getClassify() {
+        return classify;
+    }
+
+    public void setClassify(Classify classify) {
+        this.classify = classify;
+    }
 
     public Integer getgId() {
         return gId;
