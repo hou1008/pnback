@@ -13,7 +13,26 @@ public class User implements Serializable{
     private String autograph;
     private String creationDate;
     private String modifyDate;
-    private String userPhoto;
+
+    public String getUser_photo() {
+        return user_photo;
+    }
+
+    public void setUser_photo(String user_photo) {
+        this.user_photo = user_photo;
+    }
+
+    private String user_photo;
+
+    public int getFreeze() {
+        return freeze;
+    }
+
+    public void setFreeze(int freeze) {
+        this.freeze = freeze;
+    }
+
+    private int freeze;
 
     public Integer getUid() {
         return uid;
@@ -87,11 +106,4 @@ public class User implements Serializable{
         this.modifyDate = modifyDate;
     }
 
-    public String getUserPhoto() {
-        return userPhoto;
-    }
-
-    public void setUserPhoto(String userPhoto) {
-        this.userPhoto = userPhoto;
-    }
 }
