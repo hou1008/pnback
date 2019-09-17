@@ -6,6 +6,8 @@ import cn.bdqn.pnback.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class InventoryServiceImpl implements InventoryService{
     @Autowired
@@ -14,4 +16,11 @@ public class InventoryServiceImpl implements InventoryService{
     public Inventory idcha(int tId) {
         return InventoryDao.idcha(tId);
     }
+
+    @Override
+    public List<Inventory> leicha() {
+        return InventoryDao.leicha();
+    }
+
+
 }

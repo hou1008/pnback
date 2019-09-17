@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller
 public class InventoryController {
     @Autowired
@@ -19,6 +21,13 @@ public class InventoryController {
     @RequestMapping("idcha")
     public String aaa(){
         Inventory list=InventoryService.idcha(1);
+        return JSON.toJSONString(list);
+    }
+    @ResponseBody
+    @RequestMapping("leicha")
+    public String aaa22(){
+        List<Inventory> list=InventoryService.leicha();
+        System.out.println(list.size());
         return JSON.toJSONString(list);
     }
 }

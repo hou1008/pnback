@@ -8,5 +8,7 @@
     <select id="idcha" resultType="cn.bdqn.pnback.pojo.Inventory">
         SELECT * FROM Inventory where tId=1
     </select>
-
+    <select id="leicha" resultType="cn.bdqn.pnback.pojo.Inventory">
+        SELECT * FROM inventory,ticket,scene,goods,classify  WHERE inventory.`tId`= ticket.`tId` AND scene.`sId`=ticket.`sId` AND goods.`gId`=scene.`gId` AND classify.`cId`=goods.`cId`
+    </select>
 </mapper>
