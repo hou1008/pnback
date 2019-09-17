@@ -25,16 +25,16 @@ public class OrderController {
     public String getAll(){
         List<Order> order1=orderService.getAll();
         System.out.print("*************");
-        getAllgeng();
+        /*getAllgeng();*/
         return JSON.toJSONString(order1);
     }
 
-    @Scheduled(cron = "0/3 * * * * ?")
+/*    @Scheduled(cron = "0/3 * * * * ?")
     public String getAllgeng(){
         List<Order> order2=orderService.getAllgeng();
         System.out.print(order2);
         return JSON.toJSONString(order2);
-    }
+    }*/
 
 
 }

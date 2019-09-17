@@ -4,13 +4,16 @@ package cn.bdqn.pnback.controller;
 import cn.bdqn.pnback.pojo.User;
 import cn.bdqn.pnback.service.UserService;
 import com.alibaba.fastjson.JSON;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.beans.Transient;
 import java.util.List;
 
@@ -30,16 +33,21 @@ public class UserController {
         System.out.print("***********");
         return JSON.toJSONString(usera);
     }
+    //查找冻结用户
+    @ResponseBody
+    @RequestMapping("/getAlldong")
+    public String getAlldong(){
+        List<User> useraa=userService.getAlldong();
+        System.out.print("-------------");
+        return  JSON.toJSONString(useraa);
+    }
     //修改冻结用户
     @ResponseBody
-    @RequestMapping("/updateFrezee")
-    public int updateFreeze(User user){
-        User user1= new User();
-        user1.setUid(16);
-        user1.setFreeze(2);
-        Integer a =userService.updateFreeze(user1);
+    @RequestMapping("/updateFrezee/{uid}/{freeze}")
+    public String updateFreeze(@PathVariable("uid") Integer uid , @PathVariable("freeze") Integer freeze){
+        Integer data =userService.updateFreeze(uid,freeze);
         System.out.print("+======");
-        return a;
+        return JSON.toJSONString(data);
     }
     //查找管理员全部信息
     @ResponseBody
@@ -49,22 +57,25 @@ public class UserController {
         System.out.print("+++++++++");
         return JSON.toJSONString(getGuan);
     }
-
     //修改管理员信息
     @ResponseBody
     @RequestMapping("/updateGuan")
-    public Integer updateGuan(User user){
-        User userGuan=new User();
-        userGuan.setPhone("97611573");
-        userGuan.setPassword("12345678");
-        userGuan.setNickname("呵呵呵");
-        userGuan.setAutograph("可以呀");
-        userGuan.setModifyDate("1998/06/03");
-        userGuan.setUser_photo("asdqwdasdqwd 、、q");
-        userGuan.setUid(16);
-        Integer Guan=userService.updateGuan(userGuan);
+    public Integer updateGuan(@PathVariable("uid") Integer uid,@PathVariable("phone") String phone,@PathVariable("password") String password,@PathVariable("nickname") String nickname,@PathVariable("modifyDate") String modifyDate,@PathVariable("autograph") String autograph){
+        Integer Guan=userService.updateGuan(uid,phone,password,nickname,modifyDate,autograph);
         System.out.print("+++++++++");
         return Guan;
+    }
+
+
+    @ResponseBody
+    @RequestMapping("/pan")
+    public String pan(HttpServletRequest request){
+        String phone = request.getParameter("phone");
+        String pass = request.getParameter("pass");
+        System.out.println(phone);
+        System.out.println(pass);
+        int res = userService.pan(phone,pass);
+        return JSON.toJSONString(res);
     }
 
 
