@@ -20,4 +20,24 @@ public class ConsultsServiceImpl implements ConsultsService {
     public List<Consults> getAll() {
         return consultsDao.getAll();
     }
+
+    @Override
+    public int add(Consults consults) {
+        return consultsDao.add(consults);
+    }
+
+    @Override
+    public Consults getConsults(Integer id) {
+        return consultsDao.getConsults(id);
+    }
+
+    @Override
+    public Integer update(Consults consults) {
+        return consultsDao.update(consults);
+    }
+
+    @Override
+    public int del(Integer id) {
+        return consultsDao.del(id);
+    }
 }

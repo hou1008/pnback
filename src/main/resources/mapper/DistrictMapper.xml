@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.bdqn.pnback.dao.DistrictDao">
+
+    <select id="getAll" resultType="cn.bdqn.pnback.pojo.District">
+        SELECT * FROM district
+    </select>
+    <insert id="add" parameterType="cn.bdqn.pnback.pojo.District">
+        insert into district values(null,#{dName},1)
+    </insert>
+    <select id="getId" resultType="cn.bdqn.pnback.pojo.District" parameterType="Integer">
+        select * from district where dId=#{dId}
+    </select>
+    <update id="update" parameterType="cn.bdqn.pnback.pojo.District">
+        UPDATE district SET dName=#{dName},parentId=#{parentId} WHERE dId=#{dId}
+    </update>
+    <delete id="del">
+        delete from district where dId=#{dId}
+    </delete>
+</mapper>

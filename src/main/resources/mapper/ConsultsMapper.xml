@@ -8,7 +8,16 @@
     <select id="getAll" resultType="cn.bdqn.pnback.pojo.Consults">
         SELECT * FROM consults
     </select>
-    <!--<insert id="add" parameterType="cn.bdqn.onlineqa.pojo.Questions">-->
-        <!--insert into questions_user values(null,#{title},#{detailDesc},1,now())-->
-    <!--</insert>-->
+    <insert id="add" parameterType="cn.bdqn.pnback.pojo.Consults">
+        insert into consults values(null,#{uId},#{cTitle},#{content},#{imgurl},#{pId},#{cTime},#{content1})
+    </insert>
+    <select id="getConsults" resultType="cn.bdqn.pnback.pojo.Consults" parameterType="Integer">
+        select * from consults where cId=#{cId}
+    </select>
+    <update id="update" parameterType="cn.bdqn.pnback.pojo.Consults">
+        UPDATE consults SET uId=#{uId},cTitle=#{cTitle},content=#{content},imgurl=#{imgurl},pId=#{pId},cTime=#{cTime},content1=#{content1} WHERE cId=#{cId}
+    </update>
+    <delete id="del">
+        delete from consults where cId=#{cId}
+    </delete>
 </mapper>
