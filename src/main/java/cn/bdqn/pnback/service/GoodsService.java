@@ -15,5 +15,21 @@ public interface GoodsService {
      * 获取商品信息通过page,从第一个开始，每页显示几条数据
      */
     List<Goods> getGoodsPage(@Param("index") int index, @Param("pageCount") int pageCount);
+    /**
+     * 删除
+     */
+    Integer del(Integer gId);
+    /**
+     * 添加
+     */
+    Integer add(Goods goods);
+    /**
+     * 修改
+     */
+    Integer upd(Goods goods);
+    /**
+     * 根据id查
+     */
+    Goods getGoodsById(Integer gId);
 }
 

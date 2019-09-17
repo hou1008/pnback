@@ -21,6 +21,26 @@ public class GoodsServiceImpl implements GoodsService{
     public List<Goods> getGoodsPage(int index, int pageCount) {
         return goodsDao.getGoodsPage(index,pageCount);
     }
+
+    @Override
+    public Integer del(Integer gId) {
+        return goodsDao.del(gId);
+    }
+
+    @Override
+    public Integer add(Goods goods) {
+        return goodsDao.add(goods);
+    }
+
+    @Override
+    public Integer upd(Goods goods) {
+        return goodsDao.upd(goods);
+    }
+
+    @Override
+    public Goods getGoodsById(Integer gId) {
+        return goodsDao.getGoodsById(gId);
+    }
 }
 
 

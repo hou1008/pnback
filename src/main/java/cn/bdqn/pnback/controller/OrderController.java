@@ -29,7 +29,7 @@ public class OrderController {
         return JSON.toJSONString(order1);
     }
 
-    @Scheduled(cron = "0/3 * * * * ?")
+//    @Scheduled(cron = "0/3 * * * * ?")
     public String getAllgeng(){
         List<Order> order2=orderService.getAllgeng();
         System.out.print(order2);
