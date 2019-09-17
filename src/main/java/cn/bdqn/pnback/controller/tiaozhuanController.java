@@ -257,4 +257,8 @@ public class tiaozhuanController {
     public String usershow(){
         return "user-show";
     }
+    @RequestMapping("article-upd.html")
+    public  String articleupd(){
+        return "article-upd";
+    }
 }

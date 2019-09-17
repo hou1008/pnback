@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.bdqn.pnback.dao.OrderDao">
+    <!--查找用户全部信息-->
+    <select id="getAll" resultType="cn.bdqn.pnback.pojo.Order">
+       SELECT * FROM `order`
+    </select>
+
+    <select id="getAllgeng" resultType="cn.bdqn.pnback.pojo.Order">
+        SELECT * FROM `order`
+    </select>
+
+    <update id="updateOrder" parameterType="cn.bdqn.pnback.pojo.Order">
+        UPDATE
+    </update>
+
+</mapper>
