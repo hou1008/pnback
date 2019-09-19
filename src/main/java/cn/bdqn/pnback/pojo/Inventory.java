@@ -9,6 +9,34 @@ public class Inventory implements Serializable{
     private Integer iVotes;
     private Integer iSurplus;
     private Integer iSold;
+    private String cName;
+    private String sName;
+
+    public String getsName() {
+        return sName;
+    }
+
+    public void setsName(String sName) {
+        this.sName = sName;
+    }
+
+    public String getgName() {
+        return gName;
+    }
+
+    public void setgName(String gName) {
+        this.gName = gName;
+    }
+
+    private String gName;
+
+    public String getcName() {
+        return cName;
+    }
+
+    public void setcName(String cName) {
+        this.cName = cName;
+    }
 
     public Integer getiId() {
         return iId;

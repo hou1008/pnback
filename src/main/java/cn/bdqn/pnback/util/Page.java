@@ -1,6 +1,7 @@
 package cn.bdqn.pnback.util;
 
 
+import cn.bdqn.pnback.pojo.Comment;
 import cn.bdqn.pnback.pojo.Goods;
 import cn.bdqn.pnback.pojo.Order;
 
@@ -27,10 +28,19 @@ public class Page {
 	}
 
 	private List<Order> order;
+	private List<Comment> comment;
+
+	public List<Comment> getComment() {
+		return comment;
+	}
+	public void setComment(List<Comment> comment) {
+		this.comment = comment;
+	}
 
 	public List<Goods> getGoods() {
 		return goods;
 	}
+
 
 	public void setGoods(List<Goods> goods) {
 		this.goods = goods;

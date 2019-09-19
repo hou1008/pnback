@@ -4,9 +4,21 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cn.bdqn.pnback.dao.InventoryDao">
-
-    <select id="idcha" resultType="cn.bdqn.pnback.pojo.Inventory">
-        SELECT * FROM Inventory where tId=1
+    <select id="jiucha" resultType="cn.bdqn.pnback.pojo.Inventory">
+          SELECT * FROM inventory,ticket,scene,goods  WHERE inventory.`tId`= ticket.`tId` AND scene.`sId`=ticket.`sId` AND goods.`gId`=scene.`gId`
     </select>
 
+    <select id="idcha" resultType="cn.bdqn.pnback.pojo.Inventory">
+        SELECT * FROM Inventory where tId=#{tId}
+    </select>
+    <select id="leicha" resultType="cn.bdqn.pnback.pojo.Inventory">
+        SELECT * FROM inventory,ticket,scene,goods,classify  WHERE inventory.`tId`= ticket.`tId` AND scene.`sId`=ticket.`sId` AND goods.`gId`=scene.`gId` AND classify.`cId`=goods.`cId`
+    </select>
+
+    <select id="idcha1" resultType="cn.bdqn.pnback.pojo.Inventory">
+        SELECT * FROM Inventory where tId=#{tId}
+    </select>
+    <select id="jiucha1"  resultType="cn.bdqn.pnback.pojo.Inventory">
+        SELECT * FROM inventory,ticket,scene WHERE inventory.`tId`=ticket.`tId` AND ticket.`sId`=scene.`sId`
+        </select>
 </mapper>
