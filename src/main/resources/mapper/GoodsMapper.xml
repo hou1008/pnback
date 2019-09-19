@@ -26,9 +26,21 @@
         </association>
     </resultMap>
     <select id="getGoodsPage" resultMap="hehe">
-        SELECT * FROM classify c,goods g WHERE c.`cId`=g.`cId` limit #{index},#{pageCount}
+        SELECT * FROM goods g LEFT JOIN classify c ON g.`cId`= c.`cId` limit #{index},#{pageCount}
     </select>
     <select id="getCount" resultType="Integer">
-        select count(*) from classify c,goods g WHERE c.`cId`=g.`cId`
+         SELECT COUNT(*) FROM goods g LEFT JOIN classify c ON g.`cId`= c.`cId`
     </select>
+    <delete id="del">
+      DELETE FROM goods WHERE `gId`=#{gId}
+    </delete>
+    <insert id="add" parameterType="cn.bdqn.pnback.pojo.Goods">
+        INSERT INTO `ticket`.`goods` VALUES(null,#{gName},#{dId},#{cId},#{rContent},#{pFen},#{kTime},#{jTime},#{address},#{price},now(),#{rSeat},#{gDiscount},#{photoName})
+    </insert>
+    <select id="getGoodsById" resultMap="hehe">
+         SELECT * FROM goods WHERE gId=#{gId}
+    </select>
+    <update id="upd" parameterType="cn.bdqn.pnback.pojo.Goods">
+        UPDATE `ticket`.`goods` SET  `gName` = #{gName},`dId` = #{dId},`cId` = #{cId},`rContent` = #{rContent},`pFen` = #{pFen},`kTime` = #{kTime},`jTime` = #{jTime},`address` = #{address},`price` = #{price},`gTime` = #{gTime},`rSeat` = #{rSeat},`gDiscount` = #{gDiscount},`photoName`= #{photoName}  where gId=#{gId}
+    </update>
 </mapper>

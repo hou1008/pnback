@@ -9,7 +9,7 @@ public class Page {
 	//总页数
 	private int pageSum;
 	//每页显示的数量
-	private int pageCount=2;
+	private int pageCount=5;
 	//当前页码
 	private int pageIndex;
 	//总条数

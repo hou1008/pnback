@@ -19,6 +19,16 @@ public class Goods implements Serializable{
     private Double gDiscount;
     private Integer photoId;
     private Classify classify;
+    private String photoName;
+
+    public String getPhotoName() {
+        return photoName;
+    }
+
+    public void setPhotoName(String photoName) {
+        this.photoName = photoName;
+    }
+
 
     public Classify getClassify() {
         return classify;
