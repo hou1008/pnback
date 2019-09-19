@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en"  xmlns="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
@@ -7,16 +7,16 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <!--[if lt IE 9]>
-<script type="text/javascript" src="lib/html5shiv.js"></script>
-<script type="text/javascript" src="lib/respond.min.js"></script>
+<script type="text/javascript" src="/lib/html5shiv.js"></script>
+<script type="text/javascript" src="/lib/respond.min.js"></script>
 <![endif]-->
-<link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
-<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css" />
-<link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
-<link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
-<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
+<link rel="stylesheet" type="text/css" href="h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="/lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="h-ui.admin/css/style.css" />
 <!--[if IE 6]>
-<script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script type="text/javascript" src="/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
 <title>饼状图</title>
@@ -28,59 +28,78 @@
 	<div id="container" style="min-width:700px;height:400px"></div>
 </div>
 <!--_footer 作为公共模版分离出去-->
-<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 
-<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
-<script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script> 
-<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
 
 <!--请在下方写此页面业务相关的脚本-->
-<script type="text/javascript" src="lib/hcharts/Highcharts/5.0.6/js/highcharts.js"></script>
-<script type="text/javascript" src="lib/hcharts/Highcharts/5.0.6/js/modules/exporting.js"></script>
+<script type="text/javascript" src="/lib/hcharts/Highcharts/5.0.6/js/highcharts.js"></script>
+<script type="text/javascript" src="/lib/hcharts/Highcharts/5.0.6/js/modules/exporting.js"></script>
+<!--<table>-->
+		<!--<thead>-->
+		<!--<tr  th:each="li:${list}">-->
+			<!--&lt;!&ndash;<td><p th:text="${list.iSurplus}" id="iSurplus"></p></td>&ndash;&gt;-->
+			<!--&lt;!&ndash;<td><p th:text="${list.iSold}" id="iSold"></p></td>&ndash;&gt;-->
+
+		<!--</tr>-->
+		<!--</thead>-->
+<!--</table>-->
+
 <script type="text/javascript">
-$(function () {
-    $('#container').highcharts({
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false
-        },
-        title: {
-            text: 'Browser market shares at a specific website, 2010'
-        },
-        tooltip: {
-    	    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    color: '#000000',
-                    connectorColor: '#000000',
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-                }
-            }
-        },
-        series: [{
-            type: 'pie',
-            name: 'Browser share',
-            data: [
-                ['Firefox',   45.0],
-                ['IE',       26.8],
-                {
-                    name: 'Chrome',
-                    y: 12.8,
-                    sliced: true,
-                    selected: true
-                },
-                ['Safari',    8.5],
-                ['Opera',     6.2],
-                ['Others',   0.7]
-            ]
-        }]
-    });
+
+
+$(function(){
+    show();
+})
+function show(){
+    $.ajax({
+        "url":"idcha",
+        "type":"post",
+        "dataType":"json",
+        "success":function(result){
+            $(result).each(function () {
+                $('#container').highcharts({
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false
+                    },
+                    title: {
+                        text: 'Browser market shares at a specific website, 2010'
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                color: '#000000',
+                                connectorColor: '#000000',
+                                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                            }
+                        }
+                    },
+
+                    series: [{
+                        type: 'pie',
+                        name: 'Browser share',
+                        data: [
+                            ['卖出票价',   this.iSurplus ],
+                            ['剩余票价',    this.iSold ],
+                        ]
+                    }]
+                });
+           });
+		}
 });
+
+}
+
 </script>
+
 </body>
 </html>

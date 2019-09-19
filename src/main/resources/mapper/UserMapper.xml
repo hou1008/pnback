@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.bdqn.pnback.dao.UserDao">
+    <!--查找用户全部信息-->
+    <select id="getAll" resultType="cn.bdqn.pnback.pojo.User">
+        SELECT * FROM USER WHERE TYPE =2
+    </select>
+    <!--查找冻结用户-->
+    <select id="getAlldong" resultType="cn.bdqn.pnback.pojo.User">
+        SELECT * FROM USER WHERE freeze = 2
+    </select>
+    <!--修改冻结状态-->
+    <update id="updateFreeze">
+        UPDATE user SET freeze = #{freeze} WHERE uid = #{uid}
+    </update>
+    <!--查找管理员全部信息-->
+    <select id="getAllguan" resultType="cn.bdqn.pnback.pojo.User">
+        SELECT * FROM USER WHERE TYPE = 1
+    </select>
+
+    <update id="updateGuan" parameterType="cn.bdqn.pnback.pojo.User">
+        UPDATE user SET phone = #{user.phone},password =#{user.password},nickname=#{user.nickname},autograph=#{user.autograph},modifyDate=#{user.modifyDate},user_photo =#{user.user_photo} WHERE `uid` =#{user.uid}
+    </update>
+
+    <select id="pan" resultType="Integer">
+    SELECT COUNT(*) FROM user WHERE phone=#{phone} AND password = #{password}
+    </select>
+
+
+</mapper>

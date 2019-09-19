@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bdqn.pnback.dao.OrderDao">
+<resultMap type="cn.bdqn.pnback.pojo.Orders" id="orders">
+        <result property="oid" column="oid"></result>
+        <result property="oBianhao" column="oBianhao"></result>
+        <result property="oNumber" column="oNumber"></result>
+        <result property="oMoneys" column="oMoneys"></result>
+        <result property="oTime" column="oTime"></result>
+        <result property="wTime" column="wTime"></result>
+        <result property="zBianhao" column="zBianhao"></result>
+        <result property="sign" column="sign"></result>
+        <result property="peisong" column="peisong"></result>
+        <association property="oState" javaType="cn.bdqn.pnback.pojo.Orderstate" column="oState">
+            <id property="id" column="id"></id>
+            <result property="sName" column="sName"></result>
+        </association>
+        <association property="goods" javaType="cn.bdqn.pnback.pojo.Goods" column="gId">
+            <id property="gId" column="gId"></id>
+            <result property="gName" column="gName"></result>
+        </association>
+        <collection property="user" ofType="cn.bdqn.pnback.pojo.User" column="uid">
+            <result property="uid" column="uId"></result>
+            <result property="nickname" column="nickname"></result>
+        </collection>
+    </resultMap>
+
+
+
+    <select id="getCount" resultType="Integer">
+        SELECT COUNT(*) FROM `order` o,`user` u,`orderstate` os,`goods` g WHERE o.oState = os.`id` AND o.gId = g.`gId` AND o.uid = u.`uId`
+    </select>
+
+
+    <!--查找用户全部信息-->
+    <select id="getorder" resultMap="orders">
+       SELECT * FROM `order` o,`user` u,`orderstate` os,`goods` g WHERE o.oState = os.`id` AND o.gId = g.`gId` AND o.uid = u.`uId` limit #{index},#{pageCount}
+    </select>
+
+    <select id="getAllgeng" resultType="cn.bdqn.pnback.pojo.Order">
+        SELECT * FROM `order`
+    </select>
+
+    <update id="updateOrder" parameterType="cn.bdqn.pnback.pojo.Order">
+        UPDATE
+    </update>
+
+</mapper>

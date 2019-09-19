@@ -18,6 +18,34 @@ public class Goods implements Serializable{
     private Integer rSeat;
     private Double gDiscount;
     private Integer photoId;
+    private Classify classify;
+    private String photoName;
+    private  Menu menu;
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+
+    public String getPhotoName() {
+        return photoName;
+    }
+
+    public void setPhotoName(String photoName) {
+        this.photoName = photoName;
+    }
+
+
+    public Classify getClassify() {
+        return classify;
+    }
+
+    public void setClassify(Classify classify) {
+        this.classify = classify;
+    }
 
     public Integer getgId() {
         return gId;

@@ -10,16 +10,16 @@
 <link rel="Bookmark" href="/favicon.ico" >
 <link rel="Shortcut Icon" href="/favicon.ico" />
 <!--[if lt IE 9]>
-<script type="text/javascript" src="lib/html5shiv.js"></script>
-<script type="text/javascript" src="lib/respond.min.js"></script>
+<script type="text/javascript" src="/lib/html5shiv.js"></script>
+<script type="text/javascript" src="/lib/respond.min.js"></script>
 <![endif]-->
-<link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
-<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css" />
-<link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
-<link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
-<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="/lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="/h-ui.admin/css/style.css" />
 <!--[if IE 6]>
-<script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script type="text/javascript" src="/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
 <!--/meta 作为公共模版分离出去-->
@@ -30,93 +30,132 @@
 </head>
 <body>
 <article class="page-container">
-	<form class="form form-horizontal" id="form-article-add">
+	<form class="form form-horizontal" id="form-article-add" method="post"  onsubmit="return sub()">
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商品名称：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="articletitle" name="articletitle">
+				<input type="text" class="input-text" value="" placeholder="" id="gName" name="gName">
 			</div>
 		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">商品详情：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="articletitle2" name="articletitle2">
-			</div>
-		</div>
+
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>地区：</label>
 			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-				<select name="articletype" class="select">
-					<option value="0">北京</option>
-					<option value="1">太原</option>
-					<option value="2">上海</option>
+				<select name="dId" class="select" id="dId">
+					<option value="0">请选择</option>
+					<option value="1">北京</option>
+					<option value="2">太原</option>
+					<option value="3">上海</option>
 				</select>
 				</span> </div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商品类型：</label>
 			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-				<select name="articlecolumn" class="select">
+				<select name="cId" id="cId" class="select">
 					<option value="0">全部栏目</option>
-					<option value="1">演唱回</option>
-					<option value="11">演唱回1</option>
-					<option value="12">演唱回12</option>
-					<option value="13">演唱回13</option>
+					<option value="21">演唱会</option>
+					<option value="22">话剧歌院</option>
+					<option value="23">休闲展览</option>
+					<option value="24">体育赛事</option>
+					<option value="25">音乐会</option>
+					<option value="26">儿童亲子</option>
+					<option value="27">舞蹈芭蕾</option>
+					<option value="28">戏曲综艺</option>
 				</select>
 				</span> </div>
 		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">商品详情：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="" placeholder="" id="rContent" name="rContent">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">评分：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="" placeholder="" id="pFen" name="pFen">
+			</div>
+		</div>
 
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">商品价格：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="0" placeholder="" id="author" name="author">
-			</div>
-		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">商品票数：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="0" placeholder="" id="sources" name="sources">
-			</div>
-		</div>
 
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">上架开始日期：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'commentdatemax\')||\'%y-%M-%d\'}' })" id="commentdatemin" name="commentdatemin" class="input-text Wdate">
+				<input type="text" onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'jTime\')||\'%y-%M-%d\'}' })" id="kTime" name="kTime" class="input-text Wdate">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">上架结束日期：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'commentdatemin\')}' })" id="commentdatemax" name="commentdatemax" class="input-text Wdate">
+				<input type="text" onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'kTime\')}' })" id="jTime" name="jTime" class="input-text Wdate">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">演出地址：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text"  placeholder="" id="address" name="address">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">商品价格：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text"  placeholder="" id="price" name="price">
+			</div>
+		</div>
+		<!--<div class="row cl">-->
+			<!--<label class="form-label col-xs-4 col-sm-2">添加时间：</label>-->
+			<!--<div class="formControls col-xs-8 col-sm-9">-->
+				<!--<input type="text" onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'commentdatemin\')}' })" id="gTime" name="gTime" class="input-text gTime">-->
+			<!--</div>-->
+		<!--</div>-->
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>是否选座：</label>
+			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+				<select name="rSeat" id="rSeat" class="select">
+					<option value="0">请选择</option>
+					<option value="1">可以</option>
+					<option value="2">不可以</option>
+				</select>
+				</span> </div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">折扣：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text"  placeholder="" id="gDiscount" name="gDiscount">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">图片路径：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text"  placeholder="" id="photoName" name="photoName">
 			</div>
 		</div>
 
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 保存并提交审核</button>
-				<button onClick="article_save();" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存草稿</button>
-				<button onClick="removeIframe();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+				<input type="submit" value="提交" class="btn btn-primary radius">
+				<input type="button" value="取消" onclick="qin()" class="btn btn-default radius">
 			</div>
 		</div>
 	</form>
 </article>
 
 <!--_footer 作为公共模版分离出去-->
-<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
-<script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script>
-<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer /作为公共模版分离出去-->
+<script type="text/javascript" src="/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer /作为公共模版分离出去-->
 
 <!--请在下方写此页面业务相关的脚本-->
-<script type="text/javascript" src="lib/My97DatePicker/4.8/WdatePicker.js"></script>
-<script type="text/javascript" src="lib/jquery.validation/1.14.0/jquery.validate.js"></script>
-<script type="text/javascript" src="lib/jquery.validation/1.14.0/validate-methods.js"></script>
-<script type="text/javascript" src="lib/jquery.validation/1.14.0/messages_zh.js"></script>
-<script type="text/javascript" src="lib/webuploader/0.1.5/webuploader.min.js"></script>
-<script type="text/javascript" src="lib/ueditor/1.4.3/ueditor.config.js"></script>
-<script type="text/javascript" src="lib/ueditor/1.4.3/ueditor.all.min.js"> </script>
-<script type="text/javascript" src="lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript" src="/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+<script type="text/javascript" src="/lib/webuploader/0.1.5/webuploader.min.js"></script>
+<script type="text/javascript" src="/lib/ueditor/1.4.3/ueditor.config.js"></script>
+<script type="text/javascript" src="/lib/ueditor/1.4.3/ueditor.all.min.js"> </script>
+<script type="text/javascript" src="/lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
 <script type="text/javascript">
 $(function(){
 	$('.skin-minimal input').iCheck({
@@ -158,10 +197,10 @@ $(function(){
 			allowcomments:{
 				required:true,
 			},
-			commentdatemin:{
+            kTime:{
 				required:true,
 			},
-			commentdatemax:{
+            jTime:{
 				required:true,
 			},
 
@@ -279,6 +318,57 @@ $(function(){
 	var ue = UE.getEditor('editor');
 
 });
+function sub() {
+    var gName=$("input[name='gName']").val();
+    var dId=$("select[name='dId']").val();
+    var cId=$("select[name='cId']").val();
+    var rContent=$("input[name='rContent']").val();
+    var pFen=$("input[name='pFen']").val();
+    var kTime=$("input[name='kTime']").val();
+    var jTime=$("input[name='jTime']").val();
+    var address=$("input[name='address']").val();
+    var price=$("input[name='price']").val();
+//    var gTime=$("input[name='gTime']").val();
+    var rSeat=$("select[name='rSeat']").val();
+    var gDiscount=$("input[name='gDiscount']").val();
+    var photoName=$("input[name='photoName']").val();
+    if(gName==""){
+        //如果name为空，那么不让提交,给出友好提示
+        alert("商品名称不能为空")
+        return false;
+    }
+    $.ajax({
+
+        "url":"good/add",
+        "data":"gName="+gName+"&dId="+dId+"&cId="+cId+"&rContent="+rContent+"&pFen="+pFen+"&kTime="+kTime+"&jTime="+jTime+"&address="+address+"&price="+price+"&rSeat="+rSeat+"&gDiscount="+gDiscount+"&photoName="+photoName,
+        "dataType":"json",
+        "type":"post",
+        "success":function(result){
+            if(result>0){
+                alert("添加成功")
+                location.href="article-list.html";
+            }else {
+                alert("添加失败")
+                location.href="article-add.html";
+			}
+        }
+    });
+    return true;
+}
+function qin() {
+    $("#gName").val("");
+    $("#dId").val("请选择");
+    $("#cId").val("");
+    $("#rContent").val("");
+    $("#pFen").val("");
+    $("#kTime").val("");
+    $("#jTime").val("");
+    $("#address").val("");
+    $("#price").val("");
+    $("#rSeat").val("");
+    $("#gDiscount").val("");
+    $("#photoName").val("");
+}
 </script>
 <!--/请在上方写此页面业务相关的脚本-->
 </body>
