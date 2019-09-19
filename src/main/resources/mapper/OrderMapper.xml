@@ -26,9 +26,17 @@
             <result property="nickname" column="nickname"></result>
         </collection>
     </resultMap>
+
+
+
+    <select id="getCount" resultType="Integer">
+        SELECT COUNT(*) FROM `order` o,`user` u,`orderstate` os,`goods` g WHERE o.oState = os.`id` AND o.gId = g.`gId` AND o.uid = u.`uId`
+    </select>
+
+
     <!--查找用户全部信息-->
-    <select id="getAll" resultMap="orders">
-       SELECT * FROM `order` o,`user` u,`orderstate` os,`goods` g WHERE o.oState = os.`id` AND o.gId = g.`gId` AND o.uid = u.`uId`
+    <select id="getorder" resultMap="orders">
+       SELECT * FROM `order` o,`user` u,`orderstate` os,`goods` g WHERE o.oState = os.`id` AND o.gId = g.`gId` AND o.uid = u.`uId` limit #{index},#{pageCount}
     </select>
 
     <select id="getAllgeng" resultType="cn.bdqn.pnback.pojo.Order">

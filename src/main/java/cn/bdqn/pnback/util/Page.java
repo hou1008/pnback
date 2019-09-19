@@ -2,6 +2,7 @@ package cn.bdqn.pnback.util;
 
 
 import cn.bdqn.pnback.pojo.Goods;
+import cn.bdqn.pnback.pojo.Order;
 
 import java.util.List;
 
@@ -16,6 +17,16 @@ public class Page {
 	private int count;
 	//每页显示的内容
 	private List<Goods> goods;
+
+	public List<Order> getOrder() {
+		return order;
+	}
+
+	public void setOrder(List<Order> order) {
+		this.order = order;
+	}
+
+	private List<Order> order;
 
 	public List<Goods> getGoods() {
 		return goods;

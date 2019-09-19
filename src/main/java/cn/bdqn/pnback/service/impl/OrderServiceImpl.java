@@ -15,10 +15,14 @@ public class OrderServiceImpl implements OrderService{
     public OrderDao orderDao;
 
 
-    //查找所有订单
     @Override
-    public List<Order> getAll() {
-        return orderDao.getAll();
+    public int getCount() {
+        return orderDao.getCount();
+    }
+
+    @Override
+    public List<Order> getorder(int index, int pageCount) {
+        return orderDao.getorder(index,pageCount);
     }
 
     //实时更新所有订单状态
