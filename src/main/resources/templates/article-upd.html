@@ -1,6 +1,6 @@
 <!--_meta 作为公共模版分离出去-->
 <!DOCTYPE HTML>
-<html  xmlns:th="http://www.thymeleaf.org">>
+<html  xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
@@ -55,9 +55,14 @@
 			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
 				<select name="cId" id="cId" th:field="${good.cId}" class="select">
 					<option th:if="${good.cId }" value="0" th:selected="selected">全部栏目</option>
-					<option th:if="${good.cId }" value="1" th:selected="selected">演唱会</option>
-					<option th:if="${good.cId }" value="2" th:selected="selected">相声</option>
-					<option th:if="${good.cId }" value="3" th:selected="selected">休闲展览</option>
+					<option th:if="${good.cId }" value="21" th:selected="selected">演唱会</option>
+					<option th:if="${good.cId }" value="22" th:selected="selected">话剧歌院</option>
+					<option th:if="${good.cId }" value="23" th:selected="selected">休闲展览</option>
+					<option th:if="${good.cId }" value="24" th:selected="selected">体育赛事</option>
+					<option th:if="${good.cId }" value="25" th:selected="selected">音乐会</option>
+					<option th:if="${good.cId }" value="26" th:selected="selected">儿童亲子</option>
+					<option th:if="${good.cId }" value="27" th:selected="selected">舞蹈芭蕾</option>
+					<option th:if="${good.cId }" value="28" th:selected="selected">戏曲综艺</option>
 				</select>
 				</span> </div>
 		</div>
@@ -328,24 +333,21 @@ function upds() {
     var gDiscount=$("input[name='gDiscount']").val();
     var photoName=$("input[name='photoName']").val();
     var gId=$("input[name='gId']").val();
-    alert(gId+gName);
     if(gName==""){
         //如果name为空，那么不让提交,给出友好提示
         alert("商品名称不能为空")
         return false;
     }else {
-        alert(12);
         $.ajax({
             "url":"/good/update",
             "data":"gId="+gId+"&gName="+gName+"&dId="+dId+"&cId="+cId+"&rContent="+rContent+"&pFen="+pFen+"&kTime="+kTime+"&jTime="+jTime+"&address="+address+"&price="+price+"&rSeat="+rSeat+"&gDiscount="+gDiscount+"&photoName="+photoName+"&gTime="+gTime,
             "dataType":"json",
             "type":"post",
             "success":function(result){
-                alert(1);
-                alert(gId+gName);
+
                 if(result>0){
                     alert("修改成功")
-                    location.href="article-list.html";
+                    location.href="/article-list.html";
                 }else {
                     alert("修改失败")
                     location.href="article-upd.html";
