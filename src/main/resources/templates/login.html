@@ -28,7 +28,7 @@
           var phone = $("input[name=phone]").val();
           var pass = $("input[name=password]").val();
           $.ajax({
-              "url": "/User/pan",
+              "url": "/User/pan"+phone,
               "data":"phone="+phone+"&pass="+pass,
               "type": "post",
               "dataType": "json",

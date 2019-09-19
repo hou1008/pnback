@@ -42,6 +42,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public User getAllid(Integer uid) {
+        return userDao.getAllid(uid);
+    }
+
+    @Override
     public int pan(String phone, String password) {
         return userDao.pan(phone,password);
     }

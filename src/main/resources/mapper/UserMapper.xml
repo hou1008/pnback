@@ -22,11 +22,16 @@
     </select>
 
     <update id="updateGuan" parameterType="cn.bdqn.pnback.pojo.User">
-        UPDATE user SET phone = #{user.phone},password =#{user.password},nickname=#{user.nickname},autograph=#{user.autograph},modifyDate=#{user.modifyDate},user_photo =#{user.user_photo} WHERE `uid` =#{user.uid}
+        UPDATE `ticket`.`user` SET`phone` = #{phone},`password` = #{password},`nickname` = #{nickname},`autograph` = #{autograph},`modifyDate`= #{modifyDate} WHERE `uId` = #{uid}
+        UPDATE user SET phone = #{phone},password =#{password},nickname=#{nickname},autograph=#{autograph},modifyDate=#{modifyDate} WHERE `uid` =#{uid}
     </update>
 
     <select id="pan" resultType="Integer">
     SELECT COUNT(*) FROM user WHERE phone=#{phone} AND password = #{password}
+    </select>
+
+    <select id="getAllid" resultType="cn.bdqn.pnback.pojo.User">
+        SELECT * FROM USER WHERE `uid`=#{uid}
     </select>
 
 

@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+<html  xmlns:th="http://www.thymeleaf.org">
 <html>
 <head>
 <meta charset="utf-8">
@@ -26,47 +27,51 @@
 <body>
 <article class="page-container">
 	<form class="form form-horizontal" id="form-admin-add">
+
+
+
+		<input type="text" disabled="disabled" name="uid" id="uid" th:value="${user.uid}">
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>管理员：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="modifyDate" value="" placeholder="" id="phone" name="phone">
+				<input type="text" class="modifyDate" th:value="${user.phone}" value="" placeholder="" id="phone" name="phone">
 			</div>
 		</div>
 
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>密码：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="password" value="" placeholder="" id="adminName" name="adminName">
+				<input type="text" class="password" th:value="${user.password}" value="" placeholder="" id="adminName" name="adminName">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>昵称：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="nickname" value="" placeholder="" id="adminName" name="adminName">
+				<input type="text" class="nickname" th:value="${user.nickname}" value="" placeholder="" id="adminName" name="adminName">
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>管理员：</label>
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>修改日期：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="phone" value="" placeholder="" id="adminName" name="adminName">
+				<input type="text" class="modifyDate" th:value="${user.modifyDate}" value="" placeholder="" id="adminName" name="adminName">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3">个性签名：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<textarea name="" cols="" rows="" class="autograph"  placeholder="说点什么...100个字符以内" dragonfly="true" onKeyUp="$.Huitextarealength(this,100)"></textarea>
+				<textarea name="" cols="" rows="" th:value="${user.autograph}" class="autograph"  placeholder="说点什么...100个字符以内" dragonfly="true" onKeyUp="$.Huitextarealength(this,100)"></textarea>
 				<p class="autographa"><em class="textarea-length">0</em>/100</p>
 			</div>
 		</div>
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-				<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+				<input class="btn btn-primary radius" type="submit" onclick="show()" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
 			</div>
 		</div>
 	</form>
 </article>
 
-<!--_footer 作为公共模版分离出去--> 
+<!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" src="/lib/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="/lib/layer/2.4/layer.js"></script>
 <script type="text/javascript" src="/h-ui/js/H-ui.min.js"></script>
@@ -82,18 +87,26 @@
 
 
 
-    function submit() {
-        var uid=uid
+
+
+
+    function show() {
+
+        /*UPDATE `ticket`.`user` SET`phone` = 18635366342,`password` = 'asdas',`nickname` = '呵呵',`autograph` = '哈哈哈哈哈哈哈哈',`creationDate` = '1998/03/06',`user_photo` = '../img/hh.jpg' WHERE `uId` = 16*/
+
         var phone=$(".phone").val();
         var password=$(".password").val();
         var nickname=$(".nickname").val();
         var modifyDate=$(".modifyDate").val();
-        var autograph=$(".autograph").text();
+        var autograph=$(".autograph").val();
+        alert(autograph);
         $.ajax({
-            url:"/User/updateGuan/"+phone+"/"+password+"/"+nickname+"/"+modifyDate+"/"+autograph,
+            url:"/User/updateGuan/"+phone+"/"+password+"/"+nickname+"/"++"/"+modifyDate,
+			data:""
             dataType:"json",
             type: "post",
             success: function (guan) {
+                alert(modifyDate);
                 if (guan==1){
                     if (confirm("修改成功")){
                         show();
@@ -131,7 +144,7 @@ $(function(){
 		radioClass: 'iradio-blue',
 		increaseArea: '20%'
 	});
-	
+
 	$("#form-admin-add").validate({
 		rules:{
 			adminName:{
@@ -181,7 +194,7 @@ $(function(){
 		}
 	});
 });
-</script> 
+</script>
 <!--/请在上方写此页面业务相关的脚本-->
 </body>
 </html>

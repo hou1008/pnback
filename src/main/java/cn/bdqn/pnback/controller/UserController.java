@@ -9,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
 import java.beans.Transient;
 import java.util.List;
@@ -22,6 +24,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/User")
 public class UserController {
+    private Integer uidd;
+    private String ph;
     @Autowired
     private UserService userService;
 
@@ -52,26 +56,37 @@ public class UserController {
     //查找管理员全部信息
     @ResponseBody
     @RequestMapping("/getAllguan")
-    public String getAllguan(User user){
+    public String getAllguan(User user ){
         List<User> getGuan=userService.getAllguan();
         System.out.print("+++++++++");
         return JSON.toJSONString(getGuan);
     }
+
+
+    @RequestMapping("/getAllid/{uid}")
+    public String getAllid(@PathVariable("uid") Integer uid, Model model){
+        User user=userService.getAllid(uid);
+        model.addAttribute("user",user);
+        System.out.print(uid);
+        return "admin-add";
+    }
+
     //修改管理员信息
     @ResponseBody
-    @RequestMapping("/updateGuan")
-    public Integer updateGuan(@PathVariable("uid") Integer uid,@PathVariable("phone") String phone,@PathVariable("password") String password,@PathVariable("nickname") String nickname,@PathVariable("modifyDate") String modifyDate,@PathVariable("autograph") String autograph){
-        Integer Guan=userService.updateGuan(uid,phone,password,nickname,modifyDate,autograph);
-        System.out.print("+++++++++");
+    @RequestMapping("/updateGuan/{phone}/{password}/{nickname}/{modifyDate}/{autograph}")
+    public Integer updateGuan(@PathVariable("phone") String phone,@PathVariable("password") String password,@PathVariable("nickname") String nickname,@PathVariable("modifyDate") String modifyDate,@PathVariable("autograph") String autograph){
+        Integer Guan=userService.updateGuan(uidd,phone,password,nickname,autograph,modifyDate);
+        System.out.print("$$$$$$$$$$$$"+Guan);
         return Guan;
     }
 
-
+//登录
     @ResponseBody
-    @RequestMapping("/pan")
+    @RequestMapping("/pan/{phone}")
     public String pan(HttpServletRequest request){
         String phone = request.getParameter("phone");
         String pass = request.getParameter("pass");
+        ph=phone;
         System.out.println(phone);
         System.out.println(pass);
         int res = userService.pan(phone,pass);

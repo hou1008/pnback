@@ -2,6 +2,7 @@ package cn.bdqn.pnback.service;
 
 
 import cn.bdqn.pnback.pojo.User;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -16,6 +17,8 @@ public interface UserService {
     List<User> getAllguan();
     //修改管理员信息
     int updateGuan(Integer uid,String phone,String password,String nickname,String modifyDate,String autograph);
-
+    //根据id查找
+    User getAllid(Integer uid);
+    //登录
     int pan(String phone,String password);
 }

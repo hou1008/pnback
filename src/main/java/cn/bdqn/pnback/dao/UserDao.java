@@ -17,8 +17,9 @@ public interface UserDao {
     List<User> getAllguan();
     //修改管理员信息
     int updateGuan(@Param("uid") Integer uid,@Param("phone") String phone,@Param("password") String password,@Param("nickname") String nickname,@Param("modifyDate") String modifyDate,@Param("autograph") String autograph);
-
-
+    //根据id查找
+    User getAllid(@Param("uid") Integer uid);
+    //登录
     int pan(@Param("phone") String phone,@Param("password") String password);
 
 

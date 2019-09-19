@@ -38,6 +38,16 @@ public String getorder(@PathVariable int index, Model model){
 
 
 
+    @ResponseBody
+    @RequestMapping("/getsou/{oBianhao}")
+    public String getsou(@PathVariable Integer oBianhao){
+        List<Order> sou=orderService.getsou(oBianhao);
+        System.out.print(JSON.toJSONString(sou));
+    return JSON.toJSONString(sou);
+    }
+
+
+
 /*    @ResponseBody
     @RequestMapping("/getAll")
     public String getAll(){

@@ -25,6 +25,12 @@ public class OrderServiceImpl implements OrderService{
         return orderDao.getorder(index,pageCount);
     }
 
+    @Override
+    public List<Order> getsou(int oBianhao) {
+        return orderDao.getsou(oBianhao);
+    }
+
+
     //实时更新所有订单状态
     @Override
     public List<Order> getAllgeng() {

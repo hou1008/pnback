@@ -18,6 +18,9 @@ public interface OrderDao {
      */
     List<Order> getorder(@Param("index") int index, @Param("pageCount") int pageCount);
 
+    List<Order> getsou(@Param("oBianhao") int oBianhao);
+
+
     //定时更新订单状态
 
     List<Order> getAllgeng();

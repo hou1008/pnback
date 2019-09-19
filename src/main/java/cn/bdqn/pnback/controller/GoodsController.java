@@ -49,6 +49,7 @@ public class GoodsController {
         Integer res=goodsService.add(goods);
         return  JSON.toJSONString(res);
     }
+
     @RequestMapping("/toUpd/{gId}")
     public String toUpd(@PathVariable Integer gId,Model model){
        Goods good=goodsService.getGoodsById(gId);
