@@ -59,12 +59,13 @@
 
 	</div>
 </div>
-<div style="height: 50px"></div>
+<div style="height: 30px"></div>
 <div style="padding-left: 40%">
 	<a href="javascript:void(0)" onclick="shang()">上一页</a>
 	<div id="pageBox" style="display: inline-block;"></div>
 	<a href="javascript:void(0)" onclick="xia()">下一页</a>
 </div>
+<div style="height: 30px"></div>
 <!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" src="/lib/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="/lib/layer/2.4/layer.js"></script>
@@ -185,7 +186,7 @@ $(function () {
                         "\t\t\t\t\t<td><input type=\"checkbox\" value=\"\" name=\"\"></td>\n" +
                         "\t\t\t\t\t<td>"+this.gId+"</td>\n" +
                         "<td  class=\"text-l\">"+this.gName+"</td>\n" +
-                        "\t\t\t\t\t<td>"+this.classify.cName+"</td>\n" +
+                        "\t\t\t\t\t<td>"+this.menu.name+"</td>\n" +
                         "\t\t\t\t\t<td width=\"20%\">"+this.rContent+"</td>\n" +
                         "\t\t\t\t\t<td>"+this.kTime+"</td>\n" +
                         "\t\t\t\t\t<td>"+this.jTime+"</td>\n" +
@@ -240,7 +241,9 @@ $(function () {
 			}
 		}
 		function mohu() {
-
+			if($("#gName").val()==""||$("#gName").val()==null){
+			    show();
+			}
             $.ajax({
                 "url":"/good/mohu/"+$("#gName").val(),
 
@@ -254,7 +257,7 @@ $(function () {
                             "\t\t\t\t\t<td><input type=\"checkbox\" value=\"\" name=\"\"></td>\n" +
                             "\t\t\t\t\t<td>"+this.gId+"</td>\n" +
                             "<td  class=\"text-l\">"+this.gName+"</td>\n" +
-                            "\t\t\t\t\t<td>"+this.classify.cName+"</td>\n" +
+                            "\t\t\t\t\t<td>"+this.menu.name+"</td>\n" +
                             "\t\t\t\t\t<td width=\"20%\">"+this.rContent+"</td>\n" +
                             "\t\t\t\t\t<td>"+this.kTime+"</td>\n" +
                             "\t\t\t\t\t<td>"+this.jTime+"</td>\n" +

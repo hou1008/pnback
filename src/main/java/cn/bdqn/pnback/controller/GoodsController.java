@@ -33,6 +33,7 @@ public class GoodsController {
         if(index>page.getPageSum())index=page.getPageSum();
         page.setPageIndex(index);
         page.setGoods(goodsService.getGoodsPage((page.getPageIndex()-1)*page.getPageCount(),page.getPageCount()));
+
         return JSON.toJSONString(page);
     }
 
@@ -74,6 +75,7 @@ public class GoodsController {
     @RequestMapping("/mohu/{gName}")
     public String mohu(@PathVariable String gName){
         List<Goods> list=goodsService.getGoodsByName(gName);
+        System.out.print(JSON.toJSONString(list));
         return JSON.toJSONString(list);
     }
 

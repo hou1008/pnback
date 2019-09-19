@@ -20,6 +20,15 @@ public class Goods implements Serializable{
     private Integer photoId;
     private Classify classify;
     private String photoName;
+    private  Menu menu;
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
 
     public String getPhotoName() {
         return photoName;

@@ -19,17 +19,17 @@
         <result property="rSeat" column="rSeat" />
         <result property="gDiscount" column="gDiscount" />
         <result property="photoId" column="photoId" />
-        <association property="classify" javaType="cn.bdqn.pnback.pojo.Classify">
-            <id column="cId" property="cId"/>
-            <result column="cName" property="cName"/>
-            <result column="zId" property="zId"/>
+        <association property="menu" javaType="cn.bdqn.pnback.pojo.Menu">
+            <id column="id" property="id"/>
+            <result column="name" property="name"/>
+            <result column="pid" property="pid"/>
         </association>
     </resultMap>
     <select id="getGoodsPage" resultMap="hehe">
-        SELECT * FROM goods g LEFT JOIN classify c ON g.`cId`= c.`cId` limit #{index},#{pageCount}
+        SELECT * FROM goods g LEFT JOIN menu m ON g.`cId`= m.`id` limit #{index},#{pageCount}
     </select>
     <select id="getCount" resultType="Integer">
-         SELECT COUNT(*) FROM goods g LEFT JOIN classify c ON g.`cId`= c.`cId`
+         SELECT COUNT(*) FROM goods g LEFT JOIN menu m ON g.`cId`= m.`id`
     </select>
     <delete id="del">
       DELETE FROM goods WHERE `gId`=#{gId}
@@ -44,6 +44,6 @@
         UPDATE `ticket`.`goods` SET  `gName` = #{gName},`dId` = #{dId},`cId` = #{cId},`rContent` = #{rContent},`pFen` = #{pFen},`kTime` = #{kTime},`jTime` = #{jTime},`address` = #{address},`price` = #{price},`gTime` = #{gTime},`rSeat` = #{rSeat},`gDiscount` = #{gDiscount},`photoName`= #{photoName}  where gId=#{gId}
     </update>
     <select id="getGoodsByName" resultMap="hehe">
-        SELECT * FROM goods WHERE gName LIKE CONCAt('%',#{gName},'%')
+        SELECT * FROM goods g LEFT JOIN menu m ON g.`cId`= m.`id` WHERE gName LIKE CONCAt('%',#{gName},'%')
     </select>
 </mapper>
