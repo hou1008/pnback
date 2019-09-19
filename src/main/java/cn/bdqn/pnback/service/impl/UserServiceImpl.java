@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Transactional(readOnly = true)
 @Service("userService")
 public class UserServiceImpl implements UserService{
     @Autowired
@@ -22,8 +21,13 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public int updateFreeze(User user) {
-        return userDao.updateFreeze(user);
+    public List<User> getAlldong() {
+        return userDao.getAlldong();
+    }
+
+    @Override
+    public int updateFreeze(Integer uid,Integer freeze) {
+        return userDao.updateFreeze(uid,freeze);
     }
 
     @Override
@@ -33,8 +37,13 @@ public class UserServiceImpl implements UserService{
 
     @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
     @Override
-    public int updateGuan(User user) {
-        return userDao.updateGuan(user);
+    public int updateGuan(Integer uid,String phone,String password,String nickname,String modifyDate,String autograph) {
+        return userDao.updateGuan(uid,phone,password,nickname,modifyDate,autograph);
+    }
+
+    @Override
+    public int pan(String phone, String password) {
+        return userDao.pan(phone,password);
     }
 
 }
