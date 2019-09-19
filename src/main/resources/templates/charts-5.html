@@ -29,11 +29,16 @@
 	<!--<input id="lala" type="submit">-->
 
 <div class="page-container">
-	<div class="f-14 c-error">特别声明：Highcharts 是一个用纯 JavaScript编写的一个图表库，仅免费提供给个人学习、个人网站，如果在商业项目中使用，请去Highcharts官网网站购买商业授权。或者您也可以选择其他免费的第三方图表插件，例如百度echarts。H-ui.admin不承担任何版权问题。</div>
+	<div class="f-14 c-error">h</div>
 	<div id="container" style="min-width:700px;height:400px"></div>
 </div>
-<!--_footer 作为公共模版分离出去-->
+<div>
+		<table class="main_t">
+
+		</table>
+</div>
 <script type="text/javascript" src="/lib/jquery/1.9.1/jquery.min.js"></script>
+<!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" src="/lib/layer/2.4/layer.js"></script>
 <script type="text/javascript" src="/h-ui/js/H-ui.min.js"></script>
 <script type="text/javascript" src="/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
@@ -52,23 +57,33 @@
 <!--</table>-->
 
 <script type="text/javascript">
-//    function show1() {
-//        var neirong = $("input[name=shuru]").val();
-//        $.ajax({
-//            "url": "chaxue",
-//            "type": "post",
-//            "dataType": "json",
-//            "success": function (result) {
-//
-//            }
-//        });
-//    }
-$(function(){
-    show();
-})
-function show(){
+    $(function(){
+        show1();
+    })
+    function show1() {
+
+        $.ajax({
+            "url": "jiucha",
+            "type": "post",
+            "dataType": "json",
+            "success": function (result) {
+                $(".main_t").append("<tr class='t_title'>"+
+                    "<td class='width350 a_title'>栏目名称</td>"+
+                    "</tr>");
+                $(result).each(function(){
+                    $(".main_t").append("<tr>"+
+                        "<td><a  onclick='show("+this.tId+")'>"+this.gName+"</a></td>"+
+                    "</tr>");
+                });
+            }
+        });
+    }
+
+
+    function show(tId){
+
     $.ajax({
-        "url":"idcha",
+        "url":"idcha/"+tId,
         "type":"post",
         "dataType":"json",
         "success":function(result){

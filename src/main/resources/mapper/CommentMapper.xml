@@ -4,6 +4,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cn.bdqn.pnback.dao.CommentDao">
+    <select id="getCount" resultType="Integer" >
+        SELECT COUNT(*) FROM Comment
+    </select>
+        <select id="getCommentPage" resultType="cn.bdqn.pnback.pojo.Comment">
+             SELECT * FROM Comment limit #{index},#{pageCount}
+        </select>
 
     <select id="cha" resultType="cn.bdqn.pnback.pojo.Comment">
         SELECT * FROM Comment

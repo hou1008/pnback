@@ -7,11 +7,28 @@ public class Comment implements Serializable{
     private Integer cId;
     private Integer gId;
     private Integer uId;
-    private String userName;
+    private String user_name;
     private String userPhoto;
     private String contents;
     private Integer score;
-    private Integer praiseNumber;
+    private Integer praise_number;
+
+    public String getUser_name() {
+        return user_name;
+    }
+
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
+    }
+
+    public Integer getPraise_number() {
+        return praise_number;
+    }
+
+    public void setPraise_number(Integer praise_number) {
+        this.praise_number = praise_number;
+    }
+
     private String createTime;
     private String commentPhoto;
 
@@ -39,13 +56,6 @@ public class Comment implements Serializable{
         this.uId = uId;
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
 
     public String getUserPhoto() {
         return userPhoto;
@@ -69,14 +79,6 @@ public class Comment implements Serializable{
 
     public void setScore(Integer score) {
         this.score = score;
-    }
-
-    public Integer getPraiseNumber() {
-        return praiseNumber;
-    }
-
-    public void setPraiseNumber(Integer praiseNumber) {
-        this.praiseNumber = praiseNumber;
     }
 
     public String getCreateTime() {

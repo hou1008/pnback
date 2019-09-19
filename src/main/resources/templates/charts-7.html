@@ -27,6 +27,11 @@
 	<div class="f-14 c-error">特别声明：Highcharts 是一个用纯 JavaScript编写的一个图表库，仅免费提供给个人学习、个人网站，如果在商业项目中使用，请去Highcharts官网网站购买商业授权。或者您也可以选择其他免费的第三方图表插件，例如百度echarts。H-ui.admin不承担任何版权问题。</div>
 	<div id="container" style="min-width:700px;height:400px"></div>
 </div>
+<div>
+	<table class="main_t">
+
+	</table>
+</div>
 <!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" src="/lib/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="/lib/layer/2.4/layer.js"></script>
@@ -38,12 +43,32 @@
 <script type="text/javascript" src="/lib/hcharts/Highcharts/5.0.6/js/modules/exporting.js"></script>
 <script type="text/javascript" src="/lib/hcharts/Highcharts/5.0.6/js/highcharts-3d.js"></script>
 <script type="text/javascript">
-﻿﻿$(function(){
-    show();
-})
-function show(){
+    $(function(){
+        show1();
+    })
+    function show1() {
+
+        $.ajax({
+            "url": "jiucha1",
+            "type": "post",
+            "dataType": "json",
+            "success": function (result) {
+                $(".main_t").append("<tr class='t_title'>"+
+                    "<td class='width350 a_title'>栏目名称</td>"+
+                    "</tr>");
+                $(result).each(function(){
+                    $(".main_t").append("<tr>"+
+                        "<td><a  onclick='show("+this.tId+")'>"+this.sName+"</a></td>"+
+                        "</tr>");
+                });
+            }
+        });
+    }
+
+
+function show(tId){
     $.ajax({
-        "url":"idcha",
+        "url":"idcha1/"+tId,
         "type":"post",
         "dataType":"json",
         "success":function(result){

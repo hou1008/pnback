@@ -12,9 +12,25 @@ import java.util.List;
 public class InventoryServiceImpl implements InventoryService{
     @Autowired
     public InventoryDao InventoryDao;
+
+    @Override
+    public List<Inventory> jiucha() {
+        return InventoryDao.jiucha();
+    }
+
+    @Override
+    public List<Inventory> jiucha1() {
+        return InventoryDao.jiucha1();
+    }
+
     @Override
     public Inventory idcha(int tId) {
         return InventoryDao.idcha(tId);
+    }
+
+    @Override
+    public Inventory idcha1(int tId) {
+        return InventoryDao.idcha1(tId);
     }
 
     @Override
