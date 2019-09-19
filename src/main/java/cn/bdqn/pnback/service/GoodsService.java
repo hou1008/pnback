@@ -31,5 +31,9 @@ public interface GoodsService {
      * 根据id查
      */
     Goods getGoodsById(Integer gId);
+    /**
+     * 模糊查
+     */
+    List<Goods> getGoodsByName(String gName);
 }
 

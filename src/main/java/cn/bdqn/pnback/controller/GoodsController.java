@@ -70,5 +70,11 @@ public class GoodsController {
 //            return "article-upd";
 //        }
 //        }
+    @ResponseBody
+    @RequestMapping("/mohu/{gName}")
+    public String mohu(@PathVariable String gName){
+        List<Goods> list=goodsService.getGoodsByName(gName);
+        return JSON.toJSONString(list);
+    }
 
 }
