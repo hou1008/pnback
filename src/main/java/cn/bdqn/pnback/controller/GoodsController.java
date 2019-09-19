@@ -75,7 +75,7 @@ public class GoodsController {
     @RequestMapping("/mohu/{gName}")
     public String mohu(@PathVariable String gName){
         List<Goods> list=goodsService.getGoodsByName(gName);
-        System.out.print(JSON.toJSONString(list));
+
         return JSON.toJSONString(list);
     }
 

@@ -11,6 +11,15 @@ public class Consults implements Serializable{
     private String imgurl;
     private Integer pId;
     private String cTime;
+    private String content1;
+
+    public String getContent1() {
+        return content1;
+    }
+
+    public void setContent1(String content1) {
+        this.content1 = content1;
+    }
 
     public Integer getcId() {
         return cId;

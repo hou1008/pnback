@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.bdqn.pnback.dao.TroubleDao">
+
+    <select id="getAll" resultType="cn.bdqn.pnback.pojo.Trouble">
+        SELECT * FROM trouble
+    </select>
+    <insert id="add" parameterType="cn.bdqn.pnback.pojo.Trouble">
+        insert into trouble values(null,#{tProblem},#{tAnswer})
+    </insert>
+    <select id="getId" resultType="cn.bdqn.pnback.pojo.Trouble" parameterType="Integer">
+        select * from trouble where tId=#{tId}
+    </select>
+    <update id="update" parameterType="cn.bdqn.pnback.pojo.Trouble">
+        UPDATE trouble SET tProblem=#{tProblem},tAnswer=#{tAnswer} WHERE tId=#{tId}
+    </update>
+    <delete id="del">
+        delete from trouble where tId=#{tId}
+    </delete>
+</mapper>

@@ -70,9 +70,15 @@ public class tiaozhuanController {
     public String articlelist(){
         return "article-list";
     }
+    @RequestMapping("shifenxianchang-upd.html")
+    public String shifenxianchangUpd() {
+        return "shifenxianchang-add";
+    }
 
-
-
+    @RequestMapping("shifenxianchang.html")
+    public String shifenxianchang() {
+        return "shifenxianchang";
+    }
     @RequestMapping("change-password.html")
     public String changepassword(){
         return "change-password";
@@ -199,7 +205,16 @@ public class tiaozhuanController {
     public String productlistb(){
         return "product-list2";
     }
-
+    @RequestMapping("shifenxianchang-add.html")
+    public String shifenxianchangAdd() {
+        return "shifenxianchang-add";
+    }
+    @RequestMapping("diqu.html")
+    public String diqu(){return "diqu";}
+    @RequestMapping("diqu-add.html")
+    public String diquAdd(){return "diqu-add";}
+    @RequestMapping("diqu-upd.html")
+    public String diquUpd(){return "diqu-upd";}
 
     @RequestMapping("record-browse.html")
     public String recordbrowse(){
