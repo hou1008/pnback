@@ -40,7 +40,7 @@
     </select>
 
     <select id="getsou" resultMap="orders">
-        SELECT * FROM `order` o,`user` u,`orderstate` os,`goods` g WHERE o.oState = os.`id` AND o.gId = g.`gId` AND o.uid = u.`uId` AND o.`oBianhao`=#{oBianhao}
+        SELECT * FROM `order` o,`user` u,`orderstate` os,`goods` g WHERE o.oState = os.`id` AND o.gId = g.`gId` AND o.uid = u.`uId` AND o.`oBianhao`LIKE CONCAt('%',#{oBianhao},'%')
     </select>
 
 

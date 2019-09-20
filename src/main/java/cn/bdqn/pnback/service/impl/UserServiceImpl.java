@@ -15,6 +15,12 @@ import java.util.List;
 public class UserServiceImpl implements UserService{
     @Autowired
     private UserDao userDao;
+
+    @Override
+    public List<User> getAllcha(String phone) {
+        return userDao.getAllcha(phone);
+    }
+
     @Override
     public List<User> getAll() {
         return userDao.getAll();
@@ -37,8 +43,8 @@ public class UserServiceImpl implements UserService{
 
     @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
     @Override
-    public int updateGuan(Integer uid,String phone,String password,String nickname,String modifyDate,String autograph) {
-        return userDao.updateGuan(uid,phone,password,nickname,modifyDate,autograph);
+    public int updateGuan(User user) {
+        return userDao.updateGuan(user);
     }
 
     @Override

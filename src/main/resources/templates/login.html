@@ -28,13 +28,20 @@
           var phone = $("input[name=phone]").val();
           var pass = $("input[name=password]").val();
           $.ajax({
-              "url": "/User/pan"+phone,
+              "url": "/User/pan",
               "data":"phone="+phone+"&pass="+pass,
               "type": "post",
               "dataType": "json",
               "success": function (result) {
                   if(result>0){
-                      location.href="index.html";
+                      alert("1111");
+                      if (phone==123123123){
+                          location.href="index-2.html";
+                      }else {
+                          location.href="index.html";
+                      }
+
+
                   }else{
                       alert("密码账号有误");
                   }

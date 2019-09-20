@@ -22,16 +22,20 @@
     </select>
 
     <update id="updateGuan" parameterType="cn.bdqn.pnback.pojo.User">
-        UPDATE `ticket`.`user` SET`phone` = #{phone},`password` = #{password},`nickname` = #{nickname},`autograph` = #{autograph},`modifyDate`= #{modifyDate} WHERE `uId` = #{uid}
-        UPDATE user SET phone = #{phone},password =#{password},nickname=#{nickname},autograph=#{autograph},modifyDate=#{modifyDate} WHERE `uid` =#{uid}
+        UPDATE `ticket`.`user` SET`phone` = #{phone},`nickname` = #{nickname},`autograph` = #{autograph},`modifyDate`= #{modifyDate} WHERE `uId` = #{uid}
     </update>
 
     <select id="pan" resultType="Integer">
-    SELECT COUNT(*) FROM user WHERE phone=#{phone} AND password = #{password}
+    SELECT COUNT(*) FROM user WHERE phone=#{phone} AND password = #{password} AND freeze= 1
     </select>
 
     <select id="getAllid" resultType="cn.bdqn.pnback.pojo.User">
         SELECT * FROM USER WHERE `uid`=#{uid}
+    </select>
+
+
+    <select id="getAllcha" resultType="cn.bdqn.pnback.pojo.User">
+        SELECT * FROM USER WHERE phone LIKE CONCAt('%',#{phone},'%')
     </select>
 
 

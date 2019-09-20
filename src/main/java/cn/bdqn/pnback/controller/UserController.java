@@ -24,8 +24,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/User")
 public class UserController {
-    private Integer uidd;
-    private String ph;
     @Autowired
     private UserService userService;
 
@@ -63,6 +61,17 @@ public class UserController {
     }
 
 
+    //模糊查找框
+    @ResponseBody
+    @RequestMapping("/getAllcha/{phone}")
+    public String getAllcha(@PathVariable("phone") String phone){
+        List<User> chaph=userService.getAllcha(phone);
+        System.out.print(phone);
+        return JSON.toJSONString(chaph);
+    }
+
+
+
     @RequestMapping("/getAllid/{uid}")
     public String getAllid(@PathVariable("uid") Integer uid, Model model){
         User user=userService.getAllid(uid);
@@ -73,20 +82,19 @@ public class UserController {
 
     //修改管理员信息
     @ResponseBody
-    @RequestMapping("/updateGuan/{phone}/{password}/{nickname}/{modifyDate}/{autograph}")
-    public Integer updateGuan(@PathVariable("phone") String phone,@PathVariable("password") String password,@PathVariable("nickname") String nickname,@PathVariable("modifyDate") String modifyDate,@PathVariable("autograph") String autograph){
-        Integer Guan=userService.updateGuan(uidd,phone,password,nickname,autograph,modifyDate);
+    @RequestMapping("/updateGuan")
+    public String updateGuan(HttpServletRequest request,User user){
+        Integer Guan=userService.updateGuan(user);
         System.out.print("$$$$$$$$$$$$"+Guan);
-        return Guan;
+        return JSON.toJSONString(Guan);
     }
 
 //登录
     @ResponseBody
-    @RequestMapping("/pan/{phone}")
+    @RequestMapping("/pan")
     public String pan(HttpServletRequest request){
         String phone = request.getParameter("phone");
         String pass = request.getParameter("pass");
-        ph=phone;
         System.out.println(phone);
         System.out.println(pass);
         int res = userService.pan(phone,pass);

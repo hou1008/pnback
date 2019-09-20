@@ -7,6 +7,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 public interface UserService {
+
+
+    List<User> getAllcha(String phone);
+
+
     //查找全部User数据
     List<User> getAll();
     //查找冻结用户
@@ -16,7 +21,7 @@ public interface UserService {
     //查找管理员
     List<User> getAllguan();
     //修改管理员信息
-    int updateGuan(Integer uid,String phone,String password,String nickname,String modifyDate,String autograph);
+    int updateGuan(User user);
     //根据id查找
     User getAllid(Integer uid);
     //登录
