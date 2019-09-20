@@ -12,7 +12,7 @@
         SELECT * FROM Inventory where tId=#{tId}
     </select>
     <select id="leicha" resultType="cn.bdqn.pnback.pojo.Inventory">
-        SELECT * FROM inventory,ticket,scene,goods,classify  WHERE inventory.`tId`= ticket.`tId` AND scene.`sId`=ticket.`sId` AND goods.`gId`=scene.`gId` AND classify.`cId`=goods.`cId`
+        SELECT * FROM inventory,ticket,scene,goods  WHERE inventory.`tId`= ticket.`tId` AND scene.`sId`=ticket.`sId` AND goods.`gId`=scene.`gId`
     </select>
 
     <select id="idcha1" resultType="cn.bdqn.pnback.pojo.Inventory">
