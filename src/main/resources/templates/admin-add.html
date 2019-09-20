@@ -19,7 +19,7 @@
 	<script type="text/javascript" src="/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 	<script>DD_belatedPNG.fix('*');</script>
 	<![endif]-->
-	<title>添加管理员 - 管理员管理 - H-ui.admin v3.1</title>
+	<title>修改管理员 - 管理员管理 - H-ui.admin v3.1</title>
 	<meta name="keywords" content="H-ui.admin v3.1,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
 	<meta name="description" content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
 </head>
@@ -128,8 +128,6 @@
     });
 
     function show() {
-
-        /*UPDATE `ticket`.`user` SET`phone` = 18635366342,`password` = 'asdas',`nickname` = '呵呵',`autograph` = '哈哈哈哈哈哈哈哈',`creationDate` = '1998/03/06',`user_photo` = '../img/hh.jpg' WHERE `uId` = 16*/
 		var uid=$("#uid").val();
         var phone=$("#phone").val();
         var nickname=$("#nickname").val();
@@ -142,13 +140,14 @@
             type: "get",
             success: function (guan) {
                 if (guan==1){
-						location.href="/admin-list.html";
-                    });
+                    layer.msg('成功!',{icon: 6,time:2000},function tiaoa() {
+                        location.href="/admin-list.html";
+                    })
                 }else {
                     layer.msg('失败!',{icon: 6,time:2000});
                 }
             }
-        })
+        });
     }
 </script>
 <!--/请在上方写此页面业务相关的脚本-->

@@ -48,6 +48,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public int updatepwd(User user) {
+        return userDao.updatepwd(user);
+    }
+
+    @Override
     public User getAllid(Integer uid) {
         return userDao.getAllid(uid);
     }

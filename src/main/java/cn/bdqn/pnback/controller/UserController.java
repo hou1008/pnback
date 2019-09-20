@@ -56,7 +56,7 @@ public class UserController {
     @RequestMapping("/getAllguan")
     public String getAllguan(User user ){
         List<User> getGuan=userService.getAllguan();
-        System.out.print("+++++++++");
+        System.out.print("         ");
         return JSON.toJSONString(getGuan);
     }
 
@@ -71,7 +71,7 @@ public class UserController {
     }
 
 
-
+    //修改管理员信息
     @RequestMapping("/getAllid/{uid}")
     public String getAllid(@PathVariable("uid") Integer uid, Model model){
         User user=userService.getAllid(uid);
@@ -79,6 +79,23 @@ public class UserController {
         System.out.print(uid);
         return "admin-add";
     }
+    //修改密码
+    @RequestMapping("/getAllidPwd/{uid}")
+    public String getAllidPwd(@PathVariable("uid") Integer uid, Model model){
+        User user=userService.getAllid(uid);
+        model.addAttribute("user",user);
+        System.out.print("123456789+"+user.getNickname());
+        return "change-password";
+    }
+
+    @ResponseBody
+    @RequestMapping("/updatepwd")
+    public String updatepwd(HttpServletRequest request,User user){
+        Integer pwd=userService.updatepwd(user);
+        System.out.print("************"+pwd);
+        return JSON.toJSONString(pwd);
+    }
+
 
     //修改管理员信息
     @ResponseBody

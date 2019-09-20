@@ -21,19 +21,25 @@
         SELECT * FROM USER WHERE TYPE = 1
     </select>
 
+    <!--修改管理员-->
     <update id="updateGuan" parameterType="cn.bdqn.pnback.pojo.User">
         UPDATE `ticket`.`user` SET`phone` = #{phone},`nickname` = #{nickname},`autograph` = #{autograph},`modifyDate`= #{modifyDate} WHERE `uId` = #{uid}
     </update>
+    <!--修改密码-->
+    <update id="updatepwd" parameterType="cn.bdqn.pnback.pojo.User">
+        UPDATE `ticket`.`user` SET`password` = #{password} WHERE `uId` = #{uid}
+    </update>
 
+    <!--登录-->
     <select id="pan" resultType="Integer">
     SELECT COUNT(*) FROM user WHERE phone=#{phone} AND password = #{password} AND freeze= 1
     </select>
-
+    <!--根据id查找-->
     <select id="getAllid" resultType="cn.bdqn.pnback.pojo.User">
         SELECT * FROM USER WHERE `uid`=#{uid}
     </select>
 
-
+    <!--模糊搜索框查找-->
     <select id="getAllcha" resultType="cn.bdqn.pnback.pojo.User">
         SELECT * FROM USER WHERE phone LIKE CONCAt('%',#{phone},'%')
     </select>

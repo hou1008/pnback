@@ -11,7 +11,6 @@ public class MenuController {
     private MenuService MenuService;
     @RequestMapping("/zeng")
     public String add(Menu menu){
-
         int a=MenuService.zeng(menu);
         return "product-category";
     }

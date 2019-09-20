@@ -22,6 +22,8 @@ public interface UserService {
     List<User> getAllguan();
     //修改管理员信息
     int updateGuan(User user);
+    //修改密码
+    int updatepwd(User user);
     //根据id查找
     User getAllid(Integer uid);
     //登录
