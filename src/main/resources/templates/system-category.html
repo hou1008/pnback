@@ -30,7 +30,8 @@
 	<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a>
 </nav>
 <div class="page-container">
-
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="show1()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe9e3;</i> 下线列表</a></span>
+		<span class="l"><a href="javascript:;" onclick="show()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 上线列表</a></span></div>
 
 	<div class="mt-20">
 		<table class="table table-border table-bordered table-hover table-bg ">
@@ -103,7 +104,7 @@ function show(){
         "type": "post",
         "dataType": "json",
         "success": function (result) {
-
+            $("#aaaaa").html("");
             $(result).each(function (){
 
                 $("#aaaaa").append("<tr>\n" +
@@ -111,8 +112,8 @@ function show(){
                     "\t\t\t\t\t<td>"+this.id+"</td>\n" +
                     "\t\t\t\t\t<td class='text-l'>"+this.bPhoto+"</td>\n" +
                     "\t\t\t\t\t<td>"+this.bTime+"</td>\n" +
-                    "\t\t\t\t\t<td class='f-14'><a title='编辑' href=\"javascript:;\" onclick=\"system_category_edit('栏目编辑','system-category-add.html','1','700','480')\" style=\"text-decoration:none\"><i class=\"Hui-iconfont\">&#xe6df;</i></a>\n" +
-                    "\t\t\t\t\t\t<a title='删除' href=\"javascript:;\" onclick='tgai("+this.id+")'class=\"ml-5\" style=\"text-decoration:none\"><i class=\"Hui-iconfont\">&#xe6e2;</i></a></td>\n" +
+                    "\t\t\t\t\t<td class='f-14'>\n" +
+                    "\t\t\t\t\t\t<a title='下架' href=\"javascript:;\" onclick='tgai("+this.id+")'class=\"ml-5\" style=\"text-decoration:none\"><i class=\"Hui-iconfont\">&#xe6e2;</i>下线</a></td>\n" +
                     "\t\t\t\t</tr>")
             });
 
@@ -138,7 +139,47 @@ function tgai(id){
 
 
 }
+function show1(){
+    $.ajax({
+        "url": "/banner/tcha1",
+        "type": "post",
+        "dataType": "json",
+        "success": function (result) {
+            $("#aaaaa").html("");
+            $(result).each(function (){
 
+                $("#aaaaa").append("<tr>\n" +
+                    "\t\t\t\t\t<td><input type='checkbox' name='' value=''></td>\n" +
+                    "\t\t\t\t\t<td>"+this.id+"</td>\n" +
+                    "\t\t\t\t\t<td class='text-l'>"+this.bPhoto+"</td>\n" +
+                    "\t\t\t\t\t<td>"+this.bTime+"</td>\n" +
+                    "\t\t\t\t\t<td class='f-14'>\n" +
+                    "\t\t\t\t\t\t<a title='上架' href=\"javascript:;\" onclick='tgai1("+this.id+")'class=\"ml-5\" style=\"text-decoration:none\"><i class=\"Hui-iconfont\">&#xe6e2;</i>上线</a></td>\n" +
+                    "\t\t\t\t</tr>")
+            });
+
+
+        }
+    })
+}
+
+function tgai1(id){
+
+    $.ajax({
+        "url": "/banner/tgai1/"+id,
+        "type": "post",
+        "dataType": "json",
+        "success": function (result) {
+            if(result>0){
+                location.href="system-category.html";
+            }else{
+                alert("修改有误");
+            }
+        }
+    });
+
+
+}
 </script>
 </body>
 </html>

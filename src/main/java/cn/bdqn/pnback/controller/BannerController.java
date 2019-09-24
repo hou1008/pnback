@@ -31,4 +31,17 @@ public class BannerController {
         System.out.println(id);
         return JSON.toJSONString(a);
     }
+    @RequestMapping("/tcha1")
+    @ResponseBody
+    public  String tcha1(){
+        List<Banner> list=BannerService.tcha1(2);
+        System.out.println(list.size());
+        return JSON.toJSONString(list);
+    }
+    @RequestMapping("/tgai1/{id}")
+    @ResponseBody
+    public  String tgai1(@PathVariable("id") int id){
+        int a=BannerService.tgai1(id);
+        return JSON.toJSONString(a);
+    }
 }

@@ -13,4 +13,10 @@
         <update id="tgai" parameterType="cn.bdqn.pnback.pojo.Banner">
             UPDATE banner SET  zhuangtai=2 where id=#{id}
         </update>
+    <select id="tcha1" resultType="cn.bdqn.pnback.pojo.Banner">
+        select * from banner where zhuangtai=2
+    </select>
+    <update id="tgai1" parameterType="cn.bdqn.pnback.pojo.Banner">
+        UPDATE banner SET  zhuangtai=1 where id=#{id}
+    </update>
 </mapper>

@@ -21,5 +21,15 @@ public class BannerServiceImpl implements BannerService  {
         return BannerDao.tgai(id);
     }
 
+    @Override
+    public List<Banner> tcha1(int zhuangtai) {
+        return BannerDao.tcha1(zhuangtai);
+    }
+
+    @Override
+    public int tgai1(int id) {
+        return BannerDao.tgai1(id);
+    }
+
 
 }
