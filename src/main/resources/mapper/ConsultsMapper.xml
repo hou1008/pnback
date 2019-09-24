@@ -5,8 +5,14 @@
 
 <mapper namespace="cn.bdqn.pnback.dao.ConsultsDao">
 
-    <select id="getAll" resultType="cn.bdqn.pnback.pojo.Consults">
-        SELECT * FROM consults
+    <select id="getConsultsPage" resultType="cn.bdqn.pnback.pojo.Consults">
+        SELECT * FROM consults limit #{index},#{pageCount}
+    </select>
+    <select id="getMohu" resultType="cn.bdqn.pnback.pojo.Consults">
+        SELECT * FROM consults where cTitle like CONCAT('%',#{cTitile},'%')
+    </select>
+    <select id="getCount" resultType="Integer">
+        SELECT COUNT(*) FROM consults
     </select>
     <insert id="add" parameterType="cn.bdqn.pnback.pojo.Consults">
         insert into consults values(null,#{uId},#{cTitle},#{content},#{imgurl},#{pId},#{cTime},#{content1})

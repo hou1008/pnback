@@ -1,8 +1,8 @@
 package cn.bdqn.pnback.controller;
 
-import cn.bdqn.pnback.pojo.Consults;
 import cn.bdqn.pnback.pojo.Trouble;
 import cn.bdqn.pnback.service.TroubleService;
+import cn.bdqn.pnback.util.Page;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,13 +19,27 @@ public class TroubleController {
     @Autowired
     private TroubleService troubleService;
 
+    /**
+     *分页查询
+     */
     @ResponseBody
-    @RequestMapping("/getAll")
-    public String getAll(){
-        List<Trouble> list =troubleService.getAll();
-        return JSON.toJSONString(list);
+    @RequestMapping("/getAll/{index}")
+    public String page(@PathVariable int index, Model model){
+        Page page = new Page();
+        page.setCount(troubleService.getCount());
+        if(index<1)index=1;
+        if(index>page.getPageSum())index=page.getPageSum();
+        page.setPageIndex(index);
+        page.setTrouble(troubleService.getConsultsPage((page.getPageIndex()-1)*page.getPageCount(),page.getPageCount()));
+        return JSON.toJSONString(page);
     }
 
+    @ResponseBody
+    @RequestMapping("/getAll1/{name}")
+    public String getAll(@PathVariable String name){
+        List<Trouble> list = troubleService.getMohu(name);
+        return JSON.toJSONString(list);
+    }
     @ResponseBody
     @RequestMapping("/add")
     public String add(Trouble trouble){

@@ -1,9 +1,7 @@
 package cn.bdqn.pnback.util;
 
 
-import cn.bdqn.pnback.pojo.Comment;
-import cn.bdqn.pnback.pojo.Goods;
-import cn.bdqn.pnback.pojo.Order;
+import cn.bdqn.pnback.pojo.*;
 
 import java.util.List;
 
@@ -29,6 +27,34 @@ public class Page {
 
 	private List<Order> order;
 	private List<Comment> comment;
+	private List<Consults> consults;
+	private  List<Trouble> trouble;
+
+	private  List<Menu> menu;
+
+	public List<Menu> getMenu() {
+		return menu;
+	}
+
+	public void setMenu(List<Menu> menu) {
+		this.menu = menu;
+	}
+
+	public List<Consults> getConsults() {
+		return consults;
+	}
+
+	public void setConsults(List<Consults> consults) {
+		this.consults = consults;
+	}
+
+	public List<Trouble> getTrouble() {
+		return trouble;
+	}
+
+	public void setTrouble(List<Trouble> trouble) {
+		this.trouble = trouble;
+	}
 
 	public List<Comment> getComment() {
 		return comment;

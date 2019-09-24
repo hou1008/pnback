@@ -2,6 +2,7 @@ package cn.bdqn.pnback.controller;
 
 import cn.bdqn.pnback.pojo.Consults;
 import cn.bdqn.pnback.service.ConsultsService;
+import cn.bdqn.pnback.util.Page;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,10 +20,25 @@ public class ConsultsController {
     @Autowired
     private ConsultsService consultsService;
 
+    /**
+     *分页查询
+     */
     @ResponseBody
-    @RequestMapping("/getAll")
-    public String getAll(){
-        List<Consults> list =consultsService.getAll();
+    @RequestMapping("/getAll/{index}")
+    public String page(@PathVariable int index, Model model){
+        Page page = new Page();
+        page.setCount(consultsService.getCount());
+        if(index<1)index=1;
+        if(index>page.getPageSum())index=page.getPageSum();
+        page.setPageIndex(index);
+        page.setConsults(consultsService.getConsultsPage((page.getPageIndex()-1)*page.getPageCount(),page.getPageCount()));
+        return JSON.toJSONString(page);
+    }
+
+    @ResponseBody
+    @RequestMapping("/getAll1/{zxName}")
+    public String getAll(@PathVariable String zxName){
+        List<Consults> list = consultsService.getMohu(zxName);
         return JSON.toJSONString(list);
     }
 

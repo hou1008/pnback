@@ -17,8 +17,8 @@ public class ConsultsServiceImpl implements ConsultsService {
 
 
     @Override
-    public List<Consults> getAll() {
-        return consultsDao.getAll();
+    public List<Consults> getMohu(String zxName) {
+        return consultsDao.getMohu(zxName);
     }
 
     @Override
@@ -39,5 +39,15 @@ public class ConsultsServiceImpl implements ConsultsService {
     @Override
     public int del(Integer id) {
         return consultsDao.del(id);
+    }
+
+    @Override
+    public int getCount() {
+        return consultsDao.getCount();
+    }
+
+    @Override
+    public List<Consults> getConsultsPage(int index, int pageCount) {
+        return consultsDao.getConsultsPage(index,pageCount);
     }
 }

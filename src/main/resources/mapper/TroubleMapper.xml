@@ -5,8 +5,14 @@
 
 <mapper namespace="cn.bdqn.pnback.dao.TroubleDao">
 
-    <select id="getAll" resultType="cn.bdqn.pnback.pojo.Trouble">
-        SELECT * FROM trouble
+    <select id="getConsultsPage" resultType="cn.bdqn.pnback.pojo.Trouble">
+        SELECT * FROM trouble limit #{index},#{pageCount}
+    </select>
+    <select id="getCount" resultType="Integer">
+        SELECT COUNT(*) FROM trouble
+    </select>
+    <select id="getMohu" resultType="cn.bdqn.pnback.pojo.Trouble">
+        SELECT * FROM trouble where tProblem like CONCAT('%',#{tProblem},'%')
     </select>
     <insert id="add" parameterType="cn.bdqn.pnback.pojo.Trouble">
         insert into trouble values(null,#{tProblem},#{tAnswer})

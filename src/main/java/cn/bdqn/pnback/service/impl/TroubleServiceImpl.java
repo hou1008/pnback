@@ -12,9 +12,16 @@ public class TroubleServiceImpl implements TroubleService {
 
     @Autowired
     private TroubleDao troubleDao;
+
+
     @Override
-    public List<Trouble> getAll() {
-        return troubleDao.getAll();
+    public int getCount() {
+        return troubleDao.getCount();
+    }
+
+    @Override
+    public List<Trouble> getConsultsPage(int index, int pageCount) {
+        return troubleDao.getConsultsPage(index,pageCount);
     }
 
     @Override
@@ -35,5 +42,10 @@ public class TroubleServiceImpl implements TroubleService {
     @Override
     public Integer del(Integer id) {
         return troubleDao.del(id);
+    }
+
+    @Override
+    public List<Trouble> getMohu(String name) {
+        return troubleDao.getMohu(name);
     }
 }

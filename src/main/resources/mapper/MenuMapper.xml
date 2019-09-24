@@ -16,4 +16,23 @@
     <select id="lala2" resultType="cn.bdqn.pnback.pojo.Menu">
          select * from menu where pid=3
     </select>
+
+    <select id="getConsultsPage" resultType="cn.bdqn.pnback.pojo.Menu">
+        SELECT * FROM menu where pid =1 limit #{index},#{pageCount}
+    </select>
+    <select id="getCount" resultType="Integer">
+        SELECT COUNT(*) FROM menu where pid = 1
+    </select>
+    <insert id="add" parameterType="cn.bdqn.pnback.pojo.Menu">
+        insert into menu values(null,#{name},1)
+    </insert>
+    <select id="getId" resultType="cn.bdqn.pnback.pojo.Menu" parameterType="Integer">
+        select * from menu where id=#{id}
+    </select>
+    <update id="update" parameterType="cn.bdqn.pnback.pojo.Menu">
+        UPDATE menu SET name=#{name},pid=1 WHERE id=#{id}
+    </update>
+    <delete id="del">
+        delete from menu where id=#{id}
+    </delete>
 </mapper>

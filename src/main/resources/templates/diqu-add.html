@@ -68,8 +68,8 @@
     function add() {
         var name=$("input[name='name']").val();
         $.ajax({
-            "url":"district/add",
-            "data":"dName="+name,
+            "url":"menu/add",
+            "data":"name="+name,
             "dataType":"json",
             "type":"post",
             "success":function(result){

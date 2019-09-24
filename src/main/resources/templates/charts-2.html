@@ -61,11 +61,11 @@
     })
     function show(){
        $.ajax({
-		   "url":"/zhan",
+		   "url":"menu/zhan",
            "type":"post",
            "dataType":"json",
            "success":function(result){
-				alert(result);
+
                $("#aaaaa").html("");
                $("#aaaaa").append("\t<tr class=\"text-c\">\n" +
                    "\t\t\t\t\t<th width=\"25\"><input type=\"checkbox\" name=\"\" value=\"\"></th>\n" +
@@ -94,11 +94,11 @@
 
     function show1(){
         $.ajax({
-            "url":"/zhan1",
+            "url":"menu/zhan1",
             "type":"post",
             "dataType":"json",
             "success":function(result){
-                alert(result);
+
                 $("#aaaaa").html("");
                 $("#aaaaa").append("\t<tr class=\"text-c\">\n" +
                     "\t\t\t\t\t<th width=\"25\"><input type=\"checkbox\" name=\"\" value=\"\"></th>\n" +
@@ -129,11 +129,10 @@
 
     function show2(){
         $.ajax({
-            "url":"/zhan2",
+            "url":"menu/zhan2",
             "type":"post",
             "dataType":"json",
             "success":function(result){
-                alert(result);
                 $("#aaaaa").html("");
                 $("#aaaaa").append("\t<tr class=\"text-c\">\n" +
                     "\t\t\t\t\t<th width=\"25\"><input type=\"checkbox\" name=\"\" value=\"\"></th>\n" +
