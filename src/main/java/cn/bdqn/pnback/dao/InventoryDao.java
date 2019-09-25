@@ -10,4 +10,5 @@ public interface InventoryDao {
     Inventory idcha(int tId);
     Inventory idcha1(int tId);
     List<Inventory> leicha();
+    List<Inventory> leicha1(int id);
 }

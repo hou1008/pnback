@@ -11,6 +11,33 @@ public class Inventory implements Serializable{
     private Integer iSold;
     private String cName;
     private String sName;
+    private String name;
+    private Integer id;
+    private Integer theSum;
+
+    public Integer getTheSum() {
+        return theSum;
+    }
+
+    public void setTheSum(Integer theSum) {
+        this.theSum = theSum;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getsName() {
         return sName;
