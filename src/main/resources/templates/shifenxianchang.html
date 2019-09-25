@@ -80,7 +80,7 @@
                 $(result.consults).each(function (i) {
                     $("#box").append(
                         "                <tr class=\"text-c\">" +
-                        "                    <td><input type=\"checkbox\" value=\"\" name=\"\"></td>" +
+                        "                    <td><input type=\"checkbox\" value='"+this.cId+"' name=\"subcheck\"></td>" +
                         "                    <td>"+this.cId+"</td>" +
                         "                    <td>"+this.cTitle+"</td>" +
                         "                    <td>"+this.content1+"</td>" +
@@ -259,6 +259,33 @@
         layer.msg('已提交申请，耐心等待审核!', {icon: 1,time:2000});
     }
 
+    function datadel(){
+
+        var checkedNum = $("input[name='subcheck']:checked").length;
+        if(checkedNum==0){
+            alert("请至少选择一项!");
+            return false;
+        }
+        if(confirm("确定删除所选项目?")){
+            var checkedList = new Array();
+            $("input[name='subcheck']:checked").each(function(){
+                checkedList.push($(this).val());
+            });
+            $.ajax({
+                "url":"/consults/del2",
+                "type":"POST",
+                "data":{"delitems":checkedList.toString()},
+                "dataType":"html",
+                "success":function(data){
+                    $("[name='checkbox2']:checkbox").attr("checked",false);
+                    show();
+                },
+                error:function(data){
+                    art.dialog.tips('删除失败!');
+                }
+            });
+        }
+    }
 </script>
 </body>
 </html>

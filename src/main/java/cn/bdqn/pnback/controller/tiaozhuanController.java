@@ -83,10 +83,20 @@ public class tiaozhuanController {
     public String changepassword(){
         return "change-password";
     }
+    @RequestMapping("changjianwenti-add.html")
+    public String changjianwentiAdd(){
+        return "changjianwenti-add";
+    }
     @RequestMapping("changjianwenti.html")
     public String changjianwenti(){
         return "changjianwenti";
     }
+
+    @RequestMapping("changjianwenti-upd.html")
+    public String changjianwentiUpd(){
+        return "changjianwenti-upd";
+    }
+
     @RequestMapping("charts-1.html")
     public String chartsa(){
         return "charts-1";

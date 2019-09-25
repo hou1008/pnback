@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -87,5 +88,19 @@ public class MeunController {
 
         List<Menu> list= menuService.lala2(3);
         return JSON.toJSONString(list);
+    }
+
+    @RequestMapping("/del2")
+    @ResponseBody
+    public void del2(HttpServletRequest request){
+        String items = request.getParameter("delitems");// System.out.println(items);
+        String[] strs = items.split(",");
+        for (int i = 0; i < strs.length; i++) {
+            try {
+                int b = Integer.parseInt(strs[i]);
+                menuService.del(b);
+            } catch (Exception e) {
+            }
+        }
     }
 }
