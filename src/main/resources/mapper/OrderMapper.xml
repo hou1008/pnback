@@ -49,7 +49,7 @@
     </select>
 
     <update id="updateOrder" parameterType="cn.bdqn.pnback.pojo.Order">
-        UPDATE
+        UPDATE `order` SET oState = #{oState} WHERE oid = #{oid}
     </update>
 
 </mapper>

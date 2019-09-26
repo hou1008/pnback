@@ -47,6 +47,16 @@ public String getorder(@PathVariable int index, Model model){
     }
 
 
+    @ResponseBody
+    @RequestMapping("/updateOrder")
+    public String updateOrder(){
+
+
+    return  "";
+    }
+
+
+
 
 /*    @ResponseBody
     @RequestMapping("/getAll")

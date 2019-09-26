@@ -26,5 +26,7 @@ public interface OrderDao {
     List<Order> getAllgeng();
 
     //修改订单状态
-    Integer updateOrder(@Param("Order") Order order);
+
+    int updateOrder(@Param("oid") Integer oid,@Param("oState") Integer oState);
+
 }
