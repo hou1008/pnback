@@ -13,6 +13,11 @@ spring:
     encoding: UTF-8
     suffix: .html
     mode: LEGACYHTML5
+  http:
+    multipart:
+      max-file-size: 10Mb
+      max-request-size: 100Mb
+
 server:
   port: 8080
 mybatis:

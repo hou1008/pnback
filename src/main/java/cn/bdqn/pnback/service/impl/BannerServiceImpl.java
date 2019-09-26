@@ -31,5 +31,10 @@ public class BannerServiceImpl implements BannerService  {
         return BannerDao.tgai1(id);
     }
 
+    @Override
+    public int zjia(Banner banner) {
+        return BannerDao.zjia(banner);
+    }
+
 
 }

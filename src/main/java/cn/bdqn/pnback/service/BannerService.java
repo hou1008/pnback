@@ -11,4 +11,5 @@ public interface BannerService {
 
     List<Banner> tcha1(@Param("zhuangtai") int zhuangtai);
     int tgai1(@Param("id") int id);
+    int zjia(Banner banner );
 }
