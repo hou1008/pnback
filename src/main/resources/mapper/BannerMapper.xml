@@ -19,4 +19,7 @@
     <update id="tgai1" parameterType="cn.bdqn.pnback.pojo.Banner">
         UPDATE banner SET  zhuangtai=1 where id=#{id}
     </update>
+    <insert id="zjia" parameterType="cn.bdqn.pnback.pojo.Banner">
+         INSERT INTO banner VALUES(null,#{gId},#{bPhoto},now(),2)
+    </insert>
 </mapper>
