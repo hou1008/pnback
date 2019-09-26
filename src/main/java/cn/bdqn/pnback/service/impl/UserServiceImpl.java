@@ -53,9 +53,24 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public int insertuser(User user) {
+        return userDao.insertuser(user);
+    }
+
+    @Override
+    public int updateGuan(Integer uid, String phone, String password, String nickname, String modifyDate, String autograph) {
+        return 0;
+    }
+
+    @Override
     public User getAllid(Integer uid) {
         return userDao.getAllid(uid);
     }
+
+   /* @Override
+    public User getAllid(Integer uid) {
+        return userDao.getAllid(uid);
+    }*/
 
     @Override
     public int pan(String phone, String password) {

@@ -23,12 +23,29 @@
   <meta name="description" content="票牛网后台管理系统 v3.1">
   <!--<script src="../static/lib/jquery/1.9.1/jquery.min.js"></script>-->
   <script>
-
+      function yanzheng() {
+          var verification=$("#verification").val();
+          alert(verification);
+          $.ajax({
+              "url":"User/verifyCode/"+verification,
+              "data":"verification="+verification,
+              "type":"get",
+              "dataType":"json",
+              "success":function (result) {
+                  if (result==1){
+                      alert(result)
+                      pan();
+                  }else {
+                      alert("验证码错误");
+                  }
+              }
+          })
+      }
       function pan(){
           var phone = $("input[name=phone]").val();
           var pass = $("input[name=password]").val();
           $.ajax({
-              "url": "/User/pan",
+              "url": "/User/pan/"+phone,
               "data":"phone="+phone+"&pass="+pass,
               "type": "post",
               "dataType": "json",
@@ -88,7 +105,14 @@
       </div>
       <div class="row cl">
         <div class="formControls col-xs-8 col-xs-offset-3">
-          <input name="" type="button" onclick="pan()" class="btn btn-success radius size-L" value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;">
+          <input class="input-text size-L" id="verification" placeholder="验证码" type="text" style="width:150px;">
+          <a id="huanImg" href=" "><img src="http://localhost:8080/User/defaultKaptcha" onclick="this.src='http://localhost:8080/User/defaultKaptcha?d='+new Date()*1"/></a>
+        </div>
+      </div>
+
+      <div class="row cl">
+        <div class="formControls col-xs-8 col-xs-offset-3">
+          <input name="" type="button" onclick="yanzheng()" class="btn btn-success radius size-L" value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;">
           <input name="" type="reset" class="btn btn-default radius size-L" value="&nbsp;取&nbsp;&nbsp;&nbsp;&nbsp;消&nbsp;">
         </div>
       </div>
