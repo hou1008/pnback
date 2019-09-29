@@ -31,7 +31,7 @@
 	<div class="page-container">
 		<div class="text-c">
 			<input type="text" name="" id="dingdan" placeholder=" 订单编号" style="width:250px" class="input-text">
-			<button name="" id="" class="btn btn-success" onclick="dingdancha()" ><i class="Hui-iconfont">&#xe665;</i> 搜产品</button>
+			<button name="" id="" class="btn btn-success" onclick="dingdancha()" ><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
 		</div>
 		<div class="mt-20">
 			<table class="table table-border table-bordered table-bg table-hover ">
@@ -105,13 +105,17 @@ $(function () {
                         "<td>"+
                         "<a style=\"text-decoration:none\" onClick=\"product_stop(this,'10001')\" href=\"javascript:;\" title=\"下架\">"+
                         "<i class=\"Hui-iconfont\">"+"&#xe6de;"+"</i>"+
-                        "</a>"+
-                        "<a style=\"text-decoration:none\" class=\"ml-5\" onClick=\"product_edit('产品编辑','product-add.html','10001')\" href=\"javascript:;\" title=\"编辑\">"+
-                        "<i class=\"Hui-iconfont\">"+"&#xe6df;"+"</i>"+
-                        /*"</a>"+
-                        "<a style=\"text-decoration:none\" class=\"ml-5\" onClick=\"product_del(this,'10001')\" href=\"javascript:;\" title=\"删除\">"+
-                        "<i class=\"Hui-iconfont\">"+"&#xe6e2;"+"</i>"+
-                        "</a>"+*/
+                       /* "</a>"+
+						"<a style=\"text-decoration:none\" class=\"ml-5\" onClick=\"ting("+this.oid+")\"  href=\"javascript:;\" title=\"编辑\">"+
+						"<i class=\"Hui-iconfont\">"+"&#xe6df;"+"</i>"+
+						"</a>"+*/
+
+
+
+                    /*"</a>"
+                    "<a style=\"text-decoration:none\" class=\"ml-5\" onClick=\"product_del(this,'10001')\" href=\"javascript:;\" title=\"删除\">"+
+                    "<i class=\"Hui-iconfont\">"+"&#xe6e2;"+"</i>"+
+                    "</a>"+*/
                         "</td>"+
                         "</tr>"
                     )
@@ -128,6 +132,9 @@ $(function () {
             }
         })
     }
+
+
+
 
     function dingdancha() {
         var dingdan=$("#dingdan").val();
@@ -179,6 +186,31 @@ $(function () {
             }
         })
     }
+
+
+function gai(oid) {
+    var oState = 5 ;
+        $.ajax({
+            url: "/Order/updateOrder/"+oid+"/"+frezee,
+            dataType: "json",
+            type: "post",
+            success: function(data){
+                if(data==1){
+                    $(uid).remove();
+                    layer.msg('已退款',{icon: 6,time:2000});
+                    show();
+                }else {
+                    $(uid).remove();
+                    layer.msg('退款失败!',{icon: 6,time:1000});
+                }
+            },
+            error:function(data) {
+                console.log(data.msg);
+            },
+        });
+
+
+}
 
 
 

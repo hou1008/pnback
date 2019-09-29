@@ -26,29 +26,36 @@
 <body>
 <article class="page-container">
 	<form class="form form-horizontal" id="form-admin-add">
-		<input type="hidden"  name="uid" id="uid" th:value="${user.uid}">
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>管理员手机号：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" th:value="${user.phone}" placeholder="" id="phone" name="phone">
+				<input type="text" class="input-text" pl aceholder="" id="phone" name="phone">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>昵称：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text"  th:value="${user.nickname}"  id="nickname" name="nickname">
+				<input type="text" class="input-text" id="nickname" name="nickname">
 			</div>
 		</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>密码：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input name="password" id="password" class="input-text" type="password" autocomplete="off" placeholder="设置密码" tabindex="2" datatype="*6-16"  nullmsg="请输入您的新密码！" errormsg="4~16个字符，区分大小写！" >
+			</div>
+		</div>
+
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>修改日期：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" disabled =“disabled”s placeholder="" id="modifyDate" name="modifyDate">
+				<input type="text" class="input-text" disabled =“disabled”s placeholder="" id="creationDate" name="creationDate">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>个性签名：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" th:value="${user.autograph}" placeholder="@" name="autograph" id="autograph">
+				<input type="text" class="input-text" placeholder="@" name="autograph" id="autograph">
 			</div>
 		</div>
 		<div class="row cl">
@@ -73,7 +80,7 @@
 
     var d = new Date();
     var time = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate()+ ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
-    $("#modifyDate").val(time);
+    $("#creationDate").val(time);
 
     $(function(){
         $('.skin-minimal input').iCheck({
@@ -133,14 +140,14 @@
     });
 
     function show() {
-		var uid=$("#uid").val();
         var phone=$("#phone").val();
         var nickname=$("#nickname").val();
-        var modifyDate=$("#modifyDate").val();
+        var password=$("#password").val();
+        var creationDate=$("#creationDate").val();
         var autograph=$("#autograph").val();
         $.ajax({
-            url:"/User/updateGuan",
-            data:"uid="+uid+"&phone="+phone+"&nickname="+nickname+"&autograph="+autograph+"&modifyDate="+modifyDate,
+            url:"/User/insertGuan",
+            data:"password="+password+"&phone="+phone+"&nickname="+nickname+"&autograph="+autograph+"&creationDate="+creationDate,
             dataType:"json",
             type: "get",
             success: function (guan) {

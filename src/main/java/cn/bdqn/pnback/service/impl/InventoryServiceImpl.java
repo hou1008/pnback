@@ -38,5 +38,10 @@ public class InventoryServiceImpl implements InventoryService{
         return InventoryDao.leicha();
     }
 
+    @Override
+    public List<Inventory> leicha1(int id) {
+        return InventoryDao.leicha1(id);
+    }
+
 
 }

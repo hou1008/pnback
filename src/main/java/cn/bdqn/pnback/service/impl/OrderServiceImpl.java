@@ -30,6 +30,11 @@ public class OrderServiceImpl implements OrderService{
         return orderDao.getsou(oBianhao);
     }
 
+    @Override
+    public List<Order> getgaiorder(int index, int pageCount) {
+        return orderDao.getgaiorder(index,pageCount);
+    }
+
 
     //实时更新所有订单状态
     @Override
@@ -37,10 +42,10 @@ public class OrderServiceImpl implements OrderService{
         return orderDao.getAllgeng();
     }
 
-
-    //修改订单状态
     @Override
-    public Integer updateOrder(Order order) {
-        return orderDao.updateOrder(order);
+    public int updateOrder(Integer oid, Integer oState) {
+        return orderDao.updateOrder(oid,oState);
     }
+
+
 }

@@ -9,6 +9,8 @@ import java.util.List;
 public interface UserService {
 
 
+
+
     List<User> getAllcha(String phone);
 
 
@@ -22,10 +24,17 @@ public interface UserService {
     List<User> getAllguan();
     //修改管理员信息
     int updateGuan(User user);
+    //增加管理员
+    int insertGuan(User user);
     //修改密码
     int updatepwd(User user);
+    //添加
+    int insertuser(User user);
+    int updateGuan(Integer uid,String phone,String password,String nickname,String modifyDate,String autograph);
+
     //根据id查找
     User getAllid(Integer uid);
     //登录
     int pan(String phone,String password);
+
 }

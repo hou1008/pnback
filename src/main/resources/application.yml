@@ -13,9 +13,16 @@ spring:
     encoding: UTF-8
     suffix: .html
     mode: LEGACYHTML5
+<<<<<<< HEAD
+=======
+  http:
+    multipart:
+      max-file-size: 10Mb
+      max-request-size: 100Mb
+>>>>>>> origin/master
 
 server:
-  port: 8080
+  port: 8888
 mybatis:
   mapper-locations: classpath:mapper/*.xml
 

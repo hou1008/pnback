@@ -41,7 +41,7 @@
          SELECT * FROM goods WHERE gId=#{gId}
     </select>
     <update id="upd" parameterType="cn.bdqn.pnback.pojo.Goods">
-        UPDATE `ticket`.`goods` SET  `gName` = #{gName},`dId` = #{dId},`cId` = #{cId},`rContent` = #{rContent},`pFen` = #{pFen},`kTime` = #{kTime},`jTime` = #{jTime},`address` = #{address},`price` = #{price},`gTime` = #{gTime},`rSeat` = #{rSeat},`gDiscount` = #{gDiscount},`photoName`= #{photoName}  where gId=#{gId}
+        UPDATE `ticket`.`goods` SET  `gName` = #{gName},`dId` = #{dId},`cId` = #{cId},`rContent` = #{rContent},`pFen` = #{pFen},`kTime` = #{kTime},`jTime` = #{jTime},`address` = #{address},`price` = #{price},`gTime` = #{gTime},`rSeat` = #{rSeat},`gDiscount` = #{gDiscount},`photoName`= "7.jpg"  where gId=#{gId}
     </update>
     <select id="getGoodsByName" resultMap="hehe">
         SELECT * FROM goods g LEFT JOIN menu m ON g.`cId`= m.`id` WHERE gName LIKE CONCAt('%',#{gName},'%')

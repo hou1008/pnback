@@ -37,6 +37,20 @@ public String getorder(@PathVariable int index, Model model){
 }
 
 
+    @ResponseBody
+    @RequestMapping("/getgaiorder/{index}")
+    public String getgaiorder(@PathVariable int index, Model model){
+        Page page = new Page();
+        page.setCount(orderService.getCount());
+        if (index<1) index = 1;
+        if (index>page.getPageSum())index=page.getPageSum();
+        page.setPageIndex(index);
+        page.setOrder(orderService.getgaiorder((page.getPageIndex()-1)*page.getPageCount(),page.getPageCount()));
+        return JSON.toJSONString(page);
+    }
+
+
+
 
     @ResponseBody
     @RequestMapping("/getsou/{oBianhao}")
@@ -45,6 +59,16 @@ public String getorder(@PathVariable int index, Model model){
         System.out.print(JSON.toJSONString(sou));
     return JSON.toJSONString(sou);
     }
+
+
+    @ResponseBody
+    @RequestMapping("/updateOrder/{oid}/{oState}")
+    public String updateOrder(@PathVariable("oid") Integer oid,@PathVariable("oState") Integer oState){
+        Integer updo=orderService.updateOrder(oid,oState);
+        System.out.print(oState);
+    return  JSON.toJSONString(updo);
+    }
+
 
 
 

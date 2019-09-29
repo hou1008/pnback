@@ -12,7 +12,7 @@
         SELECT * FROM Inventory where tId=#{tId}
     </select>
     <select id="leicha" resultType="cn.bdqn.pnback.pojo.Inventory">
-        SELECT * FROM inventory,ticket,scene,goods  WHERE inventory.`tId`= ticket.`tId` AND scene.`sId`=ticket.`sId` AND goods.`gId`=scene.`gId`
+        SELECT SUM(inventory.`iSurplus`) AS theSum,menu.`name`,menu.`id` FROM inventory,ticket,scene,goods,menu  WHERE inventory.`tId`= ticket.`tId` AND scene.`sId`=ticket.`sId` AND goods.`gId`=scene.`gId` AND goods.`cId`=menu.`id` GROUP BY menu.`name`
     </select>
 
     <select id="idcha1" resultType="cn.bdqn.pnback.pojo.Inventory">
@@ -21,4 +21,7 @@
     <select id="jiucha1"  resultType="cn.bdqn.pnback.pojo.Inventory">
         SELECT * FROM inventory,ticket,scene WHERE inventory.`tId`=ticket.`tId` AND ticket.`sId`=scene.`sId`
         </select>
+    <select id="leicha1" resultType="cn.bdqn.pnback.pojo.Inventory">
+        SELECT * FROM inventory,ticket,scene,goods,menu  WHERE inventory.`tId`= ticket.`tId` AND scene.`sId`=ticket.`sId` AND goods.`gId`=scene.`gId` AND goods.`cId`=menu.`id` AND menu.`id`=#{id}
+    </select>
 </mapper>

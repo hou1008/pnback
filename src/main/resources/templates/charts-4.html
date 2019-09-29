@@ -9,12 +9,16 @@
 <!--[if lt IE 9]>
 <script type="text/javascript" src="/lib/html5shiv.js"></script>
 <script type="text/javascript" src="/lib/respond.min.js"></script>
+
 <![endif]-->
 <link rel="stylesheet" type="text/css" href="/h-ui/css/H-ui.min.css" />
 <link rel="stylesheet" type="text/css" href="/h-ui.admin/css/H-ui.admin.css" />
 <link rel="stylesheet" type="text/css" href="/lib/Hui-iconfont/1.0.8/iconfont.css" />
 <link rel="stylesheet" type="text/css" href="/h-ui.admin/skin/default/skin.css" id="skin" />
 <link rel="stylesheet" type="text/css" href="/h-ui.admin/css/style.css" />
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!--[if IE 6]>
 <script type="text/javascript" src="/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
@@ -22,9 +26,23 @@
 <title>柱状图统计</title>
 </head>
 <body>
+
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 统计管理 <span class="c-gray en">&gt;</span> 柱状图统计 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
-	<div class="f-14 c-error">特别声明：Highcharts 是一个用纯 JavaScript编写的一个图表库，仅免费提供给个人学习、个人网站，如果在商业项目中使用，请去Highcharts官网网站购买商业授权。或者您也可以选择其他免费的第三方图表插件，例如百度echarts。H-ui.admin不承担任何版权问题。</div>
+	<div class="btn-group ">
+		<!--<div class="btn-group1"></div>-->
+		<!--<div class="btn-group2"></div>-->
+		<!--<ul class='dropdown-menu' role='menu'>-->
+		<!--<li><a href="#">另一个功能</a></li>-->
+		<!--<li><a href="#">其他</a></li>-->
+		<!--<li><a href="#">分离的链接</a></li>-->
+		<!--</ul>-->
+
+		<ul class='dropdown-menu aaaaa' role='menu'>
+
+		</ul>
+	</div>
+	<div class="f-14 c-error"></div>
 	<div id="container" style="min-width:700px;height:400px"></div>
 </div>
 <!--_footer 作为公共模版分离出去-->
@@ -38,13 +56,97 @@
 <script type="text/javascript" src="/lib/hcharts/Highcharts/5.0.6/js/modules/exporting.js"></script>
 <script type="text/javascript">
     $(function(){
-        show();
+        show111();
     });
-    function show(){
+    function show111 () {
         $.ajax({
-            "url": "leicha","type": "post",
+        "url": "leicha",
+			"type": "post",
             "dataType": "json",
             "success": function (result) {
+
+                $(result).each(function () {
+
+                    $(".btn-group").append("<button type='button' onclick='show("+this.id+")' class='btn btn-default dropdown-toggle'\n" +
+                        "data-toggle='dropdown'>\n" +
+                        ""+this.name+" <span class='caret'></span>\n" +
+                        "</button>");
+                    });
+                var arr = [];
+                $(result).each(function () {
+                    var data = [];
+                    data.push(this.theSum);
+                    arr.push({"name":this.name,"data":data});
+                });
+                $('#container').highcharts({
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: '统计票数'
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    xAxis: {
+                        categories: [
+                            '一月'
+
+                        ]
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Rainfall (mm)'
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0
+                        }
+                    },
+
+                    series: arr
+                });
+        }
+        });
+    }
+
+
+
+    function show999(id) {
+
+        $.ajax({
+
+            "url": "leicha1/"+id,
+            "type": "post",
+            "dataType": "json",
+            "success": function (result) {
+
+            }
+        });
+    }
+
+
+    function show(id){
+        $.ajax({
+            "url": "leicha1/"+id,
+			"type": "post",
+            "dataType": "json",
+            "success": function (result) {
+                $(".aaaaa").html("");
+                $(result).each(function () {
+                    $(".aaaaa").append("<li><a onclick='show32323("+this.tId+")'>"+this.gName+"</a></li>");
+                });
                 var arr = [];
                 $(result).each(function () {
                     var data = [];
@@ -56,10 +158,10 @@
                         type: 'column'
                     },
                     title: {
-                        text: 'Monthly Average Rainfall'
+                        text: '统计票数'
                     },
                     subtitle: {
-                        text: 'Source: WorldClimate.com'
+                        text: ''
                     },
                     xAxis: {
                         categories: [
@@ -95,7 +197,53 @@
     }
 
 
+    function show32323(tId){
+        $.ajax({
+            "url":"idcha/"+tId,
+            "type":"post",
+            "dataType":"json",
+            "success":function(result){
 
+                $(result).each(function () {
+                    $('#container').highcharts({
+                        chart: {
+                            plotBackgroundColor: null,
+                            plotBorderWidth: null,
+                            plotShadow: false
+                        },
+                        title: {
+                            text: '统计买卖票数'
+                        },
+                        tooltip: {
+                            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                        },
+                        plotOptions: {
+                            pie: {
+                                allowPointSelect: true,
+                                cursor: 'pointer',
+                                dataLabels: {
+                                    enabled: true,
+                                    color: '#000000',
+                                    connectorColor: '#000000',
+                                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                                }
+                            }
+                        },
+
+                        series: [{
+                            type: 'pie',
+                            name: 'Browser share',
+                            data: [
+                                ['卖出票价',   this.iSurplus ],
+                                ['剩余票价',    this.iSold ],
+                            ]
+                        }]
+                    });
+                });
+            }
+        });
+
+    }
 
 </script>
 </body>

@@ -17,18 +17,24 @@ import java.util.List;
 public class InventoryController {
     @Autowired
     private InventoryService InventoryService;
-
+    @ResponseBody
+    @RequestMapping("leicha1/{id}")
+    public String aaa88888(@PathVariable int id){
+        List<Inventory> list=InventoryService.leicha1(id);
+        return JSON.toJSONString(list);
+    }
     @ResponseBody
     @RequestMapping("idcha/{tId}")
     public String aaa(@PathVariable int tId){
         Inventory list=InventoryService.idcha(tId);
+
         return JSON.toJSONString(list);
     }
     @ResponseBody
     @RequestMapping("leicha")
     public String aaa22(){
         List<Inventory> list=InventoryService.leicha();
-        System.out.println(list.size());
+
         return JSON.toJSONString(list);
     }
     @ResponseBody
@@ -51,4 +57,5 @@ public class InventoryController {
         Inventory list=InventoryService.idcha(tId);
         return JSON.toJSONString(list);
     }
+
 }

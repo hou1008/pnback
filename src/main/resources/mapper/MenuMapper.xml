@@ -4,9 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cn.bdqn.pnback.dao.MenuDao">
-    <!--<insert id="zeng" parameterType="cn.bdqn.pnback.pojo.Menu">-->
-        <!--INSERT INTO menu VALUES(null,#{name},NULL )-->
-    <!--</insert>-->
+    <insert id="zeng" parameterType="cn.bdqn.pnback.pojo.Menu">
+        INSERT INTO menu VALUES(null,#{name},#{pid} )
+    </insert>
     <select id="lala" resultType="cn.bdqn.pnback.pojo.Menu">
         select * from menu where pid=1
     </select>

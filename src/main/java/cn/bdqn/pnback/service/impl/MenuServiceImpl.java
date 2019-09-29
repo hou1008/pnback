@@ -14,6 +14,11 @@ public class MenuServiceImpl implements MenuService{
     private MenuDao menuDao;
 
     @Override
+    public int zeng(Menu menu) {
+        return menuDao.zeng(menu);
+    }
+
+    @Override
     public List<Menu> lala(int pid) {
         return menuDao.lala(pid);
     }

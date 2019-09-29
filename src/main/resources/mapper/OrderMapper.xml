@@ -43,13 +43,16 @@
         SELECT * FROM `order` o,`user` u,`orderstate` os,`goods` g WHERE o.oState = os.`id` AND o.gId = g.`gId` AND o.uid = u.`uId` AND o.`oBianhao`LIKE CONCAt('%',#{oBianhao},'%')
     </select>
 
+    <select id="getgaiorder" resultMap="orders">
+        SELECT * FROM `order` o,`user` u,`orderstate` os,`goods` g WHERE o.oState = os.`id` AND o.gId = g.`gId` AND o.uid = u.`uId` AND o.oState= 4 limit #{index},#{pageCount}
+    </select>
 
     <select id="getAllgeng" resultType="cn.bdqn.pnback.pojo.Order">
         SELECT * FROM `order`
     </select>
 
     <update id="updateOrder" parameterType="cn.bdqn.pnback.pojo.Order">
-        UPDATE
+        UPDATE `order` SET oState = #{oState} WHERE oid = #{oid}
     </update>
 
 </mapper>

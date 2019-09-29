@@ -28,15 +28,16 @@
 	<!--<input id="hehe" name="shuru" >-->
 	<!--<input id="lala" type="submit">-->
 
+
+	<SELECT class="main_t">
+		<option value="0">请选择</option>
+	</SELECT>
+
 <div class="page-container">
-	<div class="f-14 c-error">h</div>
+	<div class="f-14 c-error"></div>
 	<div id="container" style="min-width:700px;height:400px"></div>
 </div>
-<div>
-		<table class="main_t">
 
-		</table>
-</div>
 <script type="text/javascript" src="/lib/jquery/1.9.1/jquery.min.js"></script>
 <!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" src="/lib/layer/2.4/layer.js"></script>
@@ -57,36 +58,32 @@
 <!--</table>-->
 
 <script type="text/javascript">
-    $(function(){
-        show1();
-    })
-    function show1() {
+//    $(function(){
+//        show();
+//    })
 
-        $.ajax({
-            "url": "jiucha",
-            "type": "post",
-            "dataType": "json",
-            "success": function (result) {
-                $(".main_t").append("<tr class='t_title'>"+
-                    "<td class='width350 a_title'>栏目名称</td>"+
-                    "</tr>");
-                $(result).each(function(){
-                    $(".main_t").append("<tr>"+
-                        "<td><a  onclick='show("+this.tId+")'>"+this.gName+"</a></td>"+
-                    "</tr>");
-                });
-            }
-        });
-    }
-
-
+//    function show1() {
+//
+//        $.ajax({
+//            "url": "jiucha",
+//            "type": "post",
+//            "dataType": "json",
+//            "success": function (result) {
+//                $(result).each(function(){
+//                    $(".main_t").append(
+//                        "<OPTION onclick='show("+this.tId+")' >"+this.gName+" </OPTION> "
+//                    );
+//                });
+//            }
+//        });
+//    }
     function show(tId){
-
     $.ajax({
         "url":"idcha/"+tId,
         "type":"post",
         "dataType":"json",
         "success":function(result){
+            alert(1);
             $(result).each(function () {
                 $('#container').highcharts({
                     chart: {
