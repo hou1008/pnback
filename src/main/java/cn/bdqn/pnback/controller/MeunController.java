@@ -103,4 +103,13 @@ public class MeunController {
             }
         }
     }
+
+    @RequestMapping("/zeng")
+    public String zeng(Menu menu){
+        Integer res = menuService.zeng(menu);
+        System.out.println(menu.getName());
+        return "redirect:/charts-2.html";
+
+
+    }
 }
