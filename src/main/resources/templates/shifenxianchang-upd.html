@@ -163,19 +163,24 @@
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>咨询内容：</label>
 			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
 			<!--style给定宽度可以影响编辑器的最终宽度-->
+				<script>
+					var content = $("input[name='content']").val();
+					var editor = UE.getEditor('myEditor');
+                    editor.ready(function(){
+                        editor.setContent(content);
+                    })
 
-<script id="myEditor" >
-    <p > </p>
-
-                </script>
-
-
+				</script>
+				<div id="myEditor">
+					<input th:value="${con.content}" name="content" type="hidden"/>
+				</div>
 
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>图片：</label>
 			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-				<input type="text" class="input-text" th:value="${con.imgurl}" placeholder="" id="author" name="images">
+
+				<input type="file" name="pictureFile" th:value="${con.imgurl}">
 				</span> </div>
 		</div>
 
@@ -413,7 +418,7 @@ $(function(){
         var cid=$("input[name='cid']").val();
         var uid=$("input[name='uid']").val();
         var ctitle=$("input[name='ctitle']").val();
-        var images=$("input[name='images']").val();
+        var images=$("input[name='pictureFile']").val();
         var pid=$("input[name='pid']").val();
         var ctime=$("input[name='ctime']").val();
         var content1=$("input[name='content1']").val();
@@ -501,6 +506,16 @@ $(function(){
         for (var i = 0, btn; btn = btns[i++];) {
             domUtils.removeAttributes(btn, ["disabled"]);
         }
+    }
+</script>
+<script>
+$(function () {
+	tianjia();
+})
+
+	function tianjia() {
+        var content = $("input[name='content']").val();
+		$("#myEditor").html(content)
     }
 </script>
 <!--/请在上方写此页面业务相关的脚本-->
