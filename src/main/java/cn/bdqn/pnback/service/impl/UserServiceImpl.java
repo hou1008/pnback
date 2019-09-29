@@ -48,6 +48,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public int insertGuan(User user) {
+        return userDao.insertGuan(user);
+    }
+
+    @Override
     public int updatepwd(User user) {
         return userDao.updatepwd(user);
     }

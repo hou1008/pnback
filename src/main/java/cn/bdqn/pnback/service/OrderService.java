@@ -18,7 +18,7 @@ public interface OrderService {
 
     List<Order> getsou(@Param("oBianhao") int oBianhao);
 
-
+    List<Order> getgaiorder(@Param("index") int index, @Param("pageCount") int pageCount);
 
     //定时更新订单状态
 
