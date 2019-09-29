@@ -18,6 +18,13 @@ public interface OrderDao {
      */
     List<Order> getorder(@Param("index") int index, @Param("pageCount") int pageCount);
 
+
+
+    List<Order> getgaiorder(@Param("index") int index, @Param("pageCount") int pageCount);
+
+
+
+
     List<Order> getsou(@Param("oBianhao") int oBianhao);
 
 

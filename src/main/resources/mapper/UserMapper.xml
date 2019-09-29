@@ -30,6 +30,12 @@
         UPDATE `ticket`.`user` SET`password` = #{password} WHERE `uId` = #{uid}
     </update>
 
+    <!--增加管理员-->
+    <insert id="insertGuan" parameterType="cn.bdqn.pnback.pojo.User">
+        INSERT INTO `ticket`.`user` (`phone`,`password`,`nickname`,`type`,`autograph`,`creationDate`) VALUES(#{phone},#{password},#{nickname},'1',#{autograph},#{creationDate})
+
+    </insert>
+
     <!--登录-->
     <select id="pan" resultType="Integer">
     SELECT COUNT(*) FROM user WHERE phone=#{phone} AND password = #{password} AND freeze= 1
@@ -43,6 +49,8 @@
     <select id="getAllcha" resultType="cn.bdqn.pnback.pojo.User">
         SELECT * FROM USER WHERE phone LIKE CONCAt('%',#{phone},'%')
     </select>
+
+
 
 
 </mapper>

@@ -137,12 +137,11 @@
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">图片路径：</label>
+			<!--<label class="form-label col-xs-4 col-sm-2">图片：</label>-->
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" th:value="${good.photoName}" placeholder="" id="photoName" name="photoName">
+				<input type="hidden" class="input-text" th:value="${good.photoName}" placeholder="" id="photoName" name="photoName">
 			</div>
 		</div>
-
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
 				<input type="submit" value="提交" class="btn btn-primary radius">

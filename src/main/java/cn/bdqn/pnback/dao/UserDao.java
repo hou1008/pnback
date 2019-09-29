@@ -19,6 +19,8 @@ public interface UserDao {
     List<User> getAllguan();
     //修改管理员信息
     int updateGuan(User user);
+    //增加管理员
+    int insertGuan(User user);
     //修改密码
     int updatepwd(User user);
     //添加

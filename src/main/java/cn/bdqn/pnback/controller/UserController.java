@@ -95,6 +95,26 @@ public class UserController {
         return "admin-add";
     }
 
+/*    @RequestMapping("/zeng")
+    public String zeng() throws Exception{
+        throw new Exception("发生错误");
+    }*/
+    @RequestMapping("/zeng")
+    public String zeng(){
+        return "admin-zeng";
+    }
+    /*        INSERT INTO `ticket`.`user` (`phone`,`password`,`nickname`,`type`,`autograph`,`creationDate`) VALUES(#{phone},#{password},#{nickname},'1',#{autograph},#{creationDate})
+*/
+
+    @ResponseBody
+    @RequestMapping("/insertGuan")
+    public String insertGuan(HttpServletRequest request,User user){
+        Integer insertG = userService.insertGuan(user);
+        return JSON.toJSONString(insertG);
+    }
+
+
+
     //修改密码
     @RequestMapping("/getAllidPwd/{uid}")
     public String getAllidPwd(@PathVariable("uid") Integer uid, Model model) {
